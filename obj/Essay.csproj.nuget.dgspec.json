@@ -1,0 +1,1363 @@
+{
+  "format": 1,
+  "restore": {
+    "F:\\MVCEX\\Essay\\Essay\\Essay.csproj": {}
+  },
+  "projects": {
+    "F:\\MVCEX\\Essay\\Article.Application.Implementation\\Article.Application.Implementation.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Article.Application.Implementation\\Article.Application.Implementation.csproj",
+        "projectName": "Article.Application.Implementation",
+        "projectPath": "F:\\MVCEX\\Essay\\Article.Application.Implementation\\Article.Application.Implementation.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Article.Application.Implementation\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\MVCEX\\Essay\\Article.Application.Model\\Article.Application.Model.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Article.Application.Model\\Article.Application.Model.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Article.Application.Service\\Article.Application.Service.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Article.Application.Service\\Article.Application.Service.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Article.DomainModel\\Article.DomainModel.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Article.DomainModel\\Article.DomainModel.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Article.Services\\Article.Services.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Article.Services\\Article.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\MVCEX\\Essay\\Article.Application.Model\\Article.Application.Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Article.Application.Model\\Article.Application.Model.csproj",
+        "projectName": "Article.Application.Model",
+        "projectPath": "F:\\MVCEX\\Essay\\Article.Application.Model\\Article.Application.Model.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Article.Application.Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\MVCEX\\Essay\\Article.Application.Service\\Article.Application.Service.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Article.Application.Service\\Article.Application.Service.csproj",
+        "projectName": "Article.Application.Service",
+        "projectPath": "F:\\MVCEX\\Essay\\Article.Application.Service\\Article.Application.Service.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Article.Application.Service\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\MVCEX\\Essay\\Article.Application.Model\\Article.Application.Model.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Article.Application.Model\\Article.Application.Model.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Article.DomainModel\\Article.DomainModel.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Article.DomainModel\\Article.DomainModel.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Framework.Services\\Framework.Services.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Framework.Services\\Framework.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\MVCEX\\Essay\\Article.Bootstraper\\Article.Bootstraper.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Article.Bootstraper\\Article.Bootstraper.csproj",
+        "projectName": "Article.Bootstraper",
+        "projectPath": "F:\\MVCEX\\Essay\\Article.Bootstraper\\Article.Bootstraper.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Article.Bootstraper\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\MVCEX\\Essay\\Article.Application.Implementation\\Article.Application.Implementation.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Article.Application.Implementation\\Article.Application.Implementation.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Article.Application.Service\\Article.Application.Service.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Article.Application.Service\\Article.Application.Service.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Article.Persistence.EF\\Article.Persistence.EF.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Article.Persistence.EF\\Article.Persistence.EF.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Article.Services\\Article.Services.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Article.Services\\Article.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\MVCEX\\Essay\\Article.DomainModel\\Article.DomainModel.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Article.DomainModel\\Article.DomainModel.csproj",
+        "projectName": "Article.DomainModel",
+        "projectPath": "F:\\MVCEX\\Essay\\Article.DomainModel\\Article.DomainModel.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Article.DomainModel\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\MVCEX\\Essay\\Framework.DomainModel\\Framework.DomainModel.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Framework.DomainModel\\Framework.DomainModel.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\MVCEX\\Essay\\Article.Persistence.EF\\Article.Persistence.EF.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Article.Persistence.EF\\Article.Persistence.EF.csproj",
+        "projectName": "Article.Persistence.EF",
+        "projectPath": "F:\\MVCEX\\Essay\\Article.Persistence.EF\\Article.Persistence.EF.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Article.Persistence.EF\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\MVCEX\\Essay\\Article.DomainModel\\Article.DomainModel.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Article.DomainModel\\Article.DomainModel.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Article.Services\\Article.Services.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Article.Services\\Article.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\MVCEX\\Essay\\Article.Services\\Article.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Article.Services\\Article.Services.csproj",
+        "projectName": "Article.Services",
+        "projectPath": "F:\\MVCEX\\Essay\\Article.Services\\Article.Services.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Article.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\MVCEX\\Essay\\Article.DomainModel\\Article.DomainModel.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Article.DomainModel\\Article.DomainModel.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Framework.Services\\Framework.Services.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Framework.Services\\Framework.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\MVCEX\\Essay\\Essay\\Essay.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Essay\\Essay.csproj",
+        "projectName": "Essay",
+        "projectPath": "F:\\MVCEX\\Essay\\Essay\\Essay.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Essay\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\MVCEX\\Essay\\Article.Application.Service\\Article.Application.Service.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Article.Application.Service\\Article.Application.Service.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Article.Bootstraper\\Article.Bootstraper.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Article.Bootstraper\\Article.Bootstraper.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Article.Persistence.EF\\Article.Persistence.EF.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Article.Persistence.EF\\Article.Persistence.EF.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Framework.File\\Framework.File.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Framework.File\\Framework.File.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Security.Application.Model\\Security.Application.Model.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Security.Application.Model\\Security.Application.Model.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Security.Application.Services\\Security.Application.Services.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Security.Application.Services\\Security.Application.Services.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Security.Bootstraper\\Security.Bootstraper.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Security.Bootstraper\\Security.Bootstraper.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Grpc.Core": {
+              "target": "Package",
+              "version": "[2.44.0, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.VisualStudio.Web.CodeGeneration.Design": {
+              "target": "Package",
+              "version": "[5.0.2, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.AspNetCore.App": {
+              "privateAssets": "none"
+            },
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\MVCEX\\Essay\\Framework.DomainModel\\Framework.DomainModel.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Framework.DomainModel\\Framework.DomainModel.csproj",
+        "projectName": "Framework.DomainModel",
+        "projectPath": "F:\\MVCEX\\Essay\\Framework.DomainModel\\Framework.DomainModel.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Framework.DomainModel\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\MVCEX\\Essay\\Framework.File\\Framework.File.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Framework.File\\Framework.File.csproj",
+        "projectName": "Framework.File",
+        "projectPath": "F:\\MVCEX\\Essay\\Framework.File\\Framework.File.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Framework.File\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\MVCEX\\Essay\\Framework.Security\\Framework.Security.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Framework.Security\\Framework.Security.csproj",
+        "projectName": "Framework.Security",
+        "projectPath": "F:\\MVCEX\\Essay\\Framework.Security\\Framework.Security.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Framework.Security\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.Extensions.Options": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\MVCEX\\Essay\\Framework.Services\\Framework.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Framework.Services\\Framework.Services.csproj",
+        "projectName": "Framework.Services",
+        "projectPath": "F:\\MVCEX\\Essay\\Framework.Services\\Framework.Services.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Framework.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\MVCEX\\Essay\\Securit.Persistence.EF\\Securit.Persistence.EF.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Securit.Persistence.EF\\Securit.Persistence.EF.csproj",
+        "projectName": "Securit.Persistence.EF",
+        "projectPath": "F:\\MVCEX\\Essay\\Securit.Persistence.EF\\Securit.Persistence.EF.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Securit.Persistence.EF\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\MVCEX\\Essay\\Security.Domain.Model\\Security.Domain.Model.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Security.Domain.Model\\Security.Domain.Model.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Security.Domain.Services\\Security.Domain.Services.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Security.Domain.Services\\Security.Domain.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            },
+            "Microsoft.Extensions.DependencyInjection.Abstractions": {
+              "target": "Package",
+              "version": "[5.0.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\MVCEX\\Essay\\Security.Application.Implementation\\Security.Application.Implementation.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Security.Application.Implementation\\Security.Application.Implementation.csproj",
+        "projectName": "Security.Application.Implementation",
+        "projectPath": "F:\\MVCEX\\Essay\\Security.Application.Implementation\\Security.Application.Implementation.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Security.Application.Implementation\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\MVCEX\\Essay\\Framework.Security\\Framework.Security.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Framework.Security\\Framework.Security.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Framework.Services\\Framework.Services.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Framework.Services\\Framework.Services.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Security.Application.Model\\Security.Application.Model.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Security.Application.Model\\Security.Application.Model.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Security.Application.Services\\Security.Application.Services.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Security.Application.Services\\Security.Application.Services.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Security.Domain.Model\\Security.Domain.Model.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Security.Domain.Model\\Security.Domain.Model.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Security.Domain.Services\\Security.Domain.Services.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Security.Domain.Services\\Security.Domain.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.AspNetCore.Authentication": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            },
+            "Microsoft.AspNetCore.Authentication.Cookies": {
+              "target": "Package",
+              "version": "[2.2.0, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\MVCEX\\Essay\\Security.Application.Model\\Security.Application.Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Security.Application.Model\\Security.Application.Model.csproj",
+        "projectName": "Security.Application.Model",
+        "projectPath": "F:\\MVCEX\\Essay\\Security.Application.Model\\Security.Application.Model.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Security.Application.Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {}
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\MVCEX\\Essay\\Security.Application.Services\\Security.Application.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Security.Application.Services\\Security.Application.Services.csproj",
+        "projectName": "Security.Application.Services",
+        "projectPath": "F:\\MVCEX\\Essay\\Security.Application.Services\\Security.Application.Services.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Security.Application.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\MVCEX\\Essay\\Framework.Services\\Framework.Services.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Framework.Services\\Framework.Services.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Security.Application.Model\\Security.Application.Model.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Security.Application.Model\\Security.Application.Model.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Security.Domain.Model\\Security.Domain.Model.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Security.Domain.Model\\Security.Domain.Model.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Security.Domain.Services\\Security.Domain.Services.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Security.Domain.Services\\Security.Domain.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\MVCEX\\Essay\\Security.Bootstraper\\Security.Bootstraper.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Security.Bootstraper\\Security.Bootstraper.csproj",
+        "projectName": "Security.Bootstraper",
+        "projectPath": "F:\\MVCEX\\Essay\\Security.Bootstraper\\Security.Bootstraper.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Security.Bootstraper\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\MVCEX\\Essay\\Framework.Security\\Framework.Security.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Framework.Security\\Framework.Security.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Securit.Persistence.EF\\Securit.Persistence.EF.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Securit.Persistence.EF\\Securit.Persistence.EF.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Security.Application.Implementation\\Security.Application.Implementation.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Security.Application.Implementation\\Security.Application.Implementation.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Security.Application.Services\\Security.Application.Services.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Security.Application.Services\\Security.Application.Services.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Security.Domain.Services\\Security.Domain.Services.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Security.Domain.Services\\Security.Domain.Services.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "dependencies": {
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Design": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.SqlServer": {
+              "target": "Package",
+              "version": "[5.0.7, )"
+            },
+            "Microsoft.EntityFrameworkCore.Tools": {
+              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+              "suppressParent": "All",
+              "target": "Package",
+              "version": "[5.0.7, )"
+            }
+          },
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\MVCEX\\Essay\\Security.Domain.Model\\Security.Domain.Model.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Security.Domain.Model\\Security.Domain.Model.csproj",
+        "projectName": "Security.Domain.Model",
+        "projectPath": "F:\\MVCEX\\Essay\\Security.Domain.Model\\Security.Domain.Model.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Security.Domain.Model\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\MVCEX\\Essay\\Framework.DomainModel\\Framework.DomainModel.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Framework.DomainModel\\Framework.DomainModel.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    },
+    "F:\\MVCEX\\Essay\\Security.Domain.Services\\Security.Domain.Services.csproj": {
+      "version": "1.0.0",
+      "restore": {
+        "projectUniqueName": "F:\\MVCEX\\Essay\\Security.Domain.Services\\Security.Domain.Services.csproj",
+        "projectName": "Security.Domain.Services",
+        "projectPath": "F:\\MVCEX\\Essay\\Security.Domain.Services\\Security.Domain.Services.csproj",
+        "packagesPath": "C:\\Users\\Amin\\.nuget\\packages\\",
+        "outputPath": "F:\\MVCEX\\Essay\\Security.Domain.Services\\obj\\",
+        "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
+        ],
+        "configFilePaths": [
+          "C:\\Users\\Amin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
+          "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        ],
+        "originalTargetFrameworks": [
+          "net5.0"
+        ],
+        "sources": {
+          "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "https://api.nuget.org/v3/index.json": {}
+        },
+        "frameworks": {
+          "net5.0": {
+            "targetAlias": "net5.0",
+            "projectReferences": {
+              "F:\\MVCEX\\Essay\\Framework.Services\\Framework.Services.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Framework.Services\\Framework.Services.csproj"
+              },
+              "F:\\MVCEX\\Essay\\Security.Domain.Model\\Security.Domain.Model.csproj": {
+                "projectPath": "F:\\MVCEX\\Essay\\Security.Domain.Model\\Security.Domain.Model.csproj"
+              }
+            }
+          }
+        },
+        "warningProperties": {
+          "warnAsError": [
+            "NU1605"
+          ]
+        }
+      },
+      "frameworks": {
+        "net5.0": {
+          "targetAlias": "net5.0",
+          "imports": [
+            "net461",
+            "net462",
+            "net47",
+            "net471",
+            "net472",
+            "net48"
+          ],
+          "assetTargetFallback": true,
+          "warn": true,
+          "frameworkReferences": {
+            "Microsoft.NETCore.App": {
+              "privateAssets": "all"
+            }
+          },
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.406\\RuntimeIdentifierGraph.json"
+        }
+      }
+    }
+  }
+}

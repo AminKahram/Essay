@@ -1,0 +1,964 @@
+﻿@model IEnumerable<Article.DomainModel.Query.Article.ArticleListItemForClientModel>
+@*@{
+        Layout = "~/Views/Shared/_Layout.cshtml";
+    }*@
+<!--<table class="table">
+    <thead>
+        <tr>
+            <th>
+                Html.DisplayNameFor(model => model.ArticleID)
+            </th>
+            <th>
+                Html.DisplayNameFor(model => model.ArticleSubject)
+            </th>
+            <th>
+                Html.DisplayNameFor(model => model.ArticlImageName)
+            </th>
+            <th>
+                Html.DisplayNameFor(model => model.AuthorName)
+            </th>
+            <th>
+                Html.DisplayNameFor(model => model.AuthorID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    Html.DisplayFor(modelItem => item.ArticleID)
+                </td>
+                <td>
+                    Html.DisplayFor(modelItem => item.ArticleSubject)
+                </td>
+                <td>
+                    Html.DisplayFor(modelItem => item.ArticlImageName)
+                </td>
+                <td>
+                    Html.DisplayFor(modelItem => item.AuthorName)
+                </td>
+                <td>
+                    Html.DisplayFor(modelItem => item.AuthorID)
+                </td>
+                <td>
+                    Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
+                    Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
+                    Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>-->
+@if (!Model.Any())
+{
+    <div class="page-404">
+        <div class="container text-center">
+            <div class="page-404-title">
+                <h1>صفحه‌ای که دنبال آن بودید پیدا نشد!</h1>
+            </div>
+            <!--<div class="page-404-actions">
+                <a href="#" class="page-404-action page-404-action--primary">صفحه اصلی</a>
+            </div>-->
+            <div class="page-404-image">
+                <img src="~/ClientAssets/assets/img/404.png">
+            </div>
+        </div>
+    </div>
+}
+@if (Model.Any())
+{
+    <!--<div class="col-12 col-sm-12 col-md-8 col-lg-9 order-2">
+        <div class="listing default" style="margin-top: 15px;">
+
+            <div class="listing-counter">TempData["PageCountArticleClient"]-->@*۶,۱۸۸ کالا*@
+            <!--مقاله</div>
+            <div class="listing-header default">
+                </div>
+
+            <div class="tab-content default text-center">
+                <div class="tab-pane active" id="related" role="tabpanel" aria-expanded="true">
+                    <div class="container no-padding-right">
+                        <ul class="row listing-items">-->
+            <div class="listing-counter"> @TempData["ArticleCountClient"] مقاله</div>
+            <div class="tab-content default text-center">
+                <div class="tab-pane active" id="related" role="tabpanel" aria-expanded="true">
+                    <div class="container no-padding-right">
+                        <ul class="row listing-items " id="ArticleClientList">
+
+                            @foreach (var item in Model)
+                            {
+                                <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                                    <div class="product-box">
+                                        <!--<div class="product-seller-details product-seller-details-item-grid">
+                                            <span class="product-main-seller">
+                                                <span class="product-seller-details-label">
+                                                    فروشنده:
+                                                </span>تاپ کالا
+                                            </span>
+                                            <span class="product-seller-details-badge-container"></span>
+                                        </div>-->
+                                        <a class="product-box-img" href='@Url.Action("ClientItem","Home",new{ID = item.ArticleID})'>
+                                            @*<img src="~/Content/Photos/Article/01011401064219بظ_شور_گل_کلم.jpg" />*@
+                                            <!--<img src="~/ClientAssets/assets/img/product/2310961.jpg" alt="">-->
+                                            <img src="~/Content/Photos/Article/@item.ArticlImageName" alt="@item.ArticlImageName">
+
+                                        </a>
+                                        <div class="product-box-content">
+                                            <div class="product-box-content-row">
+                                                <div class="product-box-title">
+                                                    <a href='@Url.Action("ClientItem","Home",new{ID = item.ArticleID})'>
+                                                        @item.ArticleSubject
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-box-row product-box-row-price">
+                                                <div class="price">
+                                                    <div class="price-value">
+                                                        <div class="price-value-wrapper">
+                                                            <span class="price-currency">@item.AuthorName</span>
+                                                            @*۲,۳۷۸,۰۰۰ <span class="price-currency">تومان</span>*@
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            }
+
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+
+            <!--   <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                <div class="product-box">
+                    <div class="product-seller-details product-seller-details-item-grid">
+                        <span class="product-main-seller">
+                            <span class="product-seller-details-label">
+                                فروشنده:
+                            </span>تاپ کالا
+                        </span>
+                        <span class="product-seller-details-badge-container"></span>
+                    </div>
+                    <a class="product-box-img" href="#">
+                        <img src="~/ClientAssets/assets/img/product/3694075.jpg" alt="">
+                    </a>
+                    <div class="product-box-content">
+                        <div class="product-box-content-row">
+                            <div class="product-box-title">
+                                <a href="#">
+                                    گوشی موبایل هوآوی مدل Nova 3i INE-LX1M دو سیم کارت
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-box-row product-box-row-price">
+                            <div class="price">
+                                <div class="price-value">
+                                    <div class="price-value-wrapper">
+                                        ۴,۱۳۹,۰۰۰ <span class="price-currency">تومان</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                <div class="product-box">
+                    <div class="product-seller-details product-seller-details-item-grid">
+                        <span class="product-main-seller">
+                            <span class="product-seller-details-label">
+                                فروشنده:
+                            </span>تاپ کالا
+                        </span>
+                        <span class="product-seller-details-badge-container"></span>
+                    </div>
+                    <a class="product-box-img" href="#">
+                        <img src="~/ClientAssets/assets/img/product/1335154.jpg" alt="">
+                    </a>
+                    <div class="product-box-content">
+                        <div class="product-box-content-row">
+                            <div class="product-box-title">
+                                <a href="#">
+                                    گوشی موبایل اپل مدل iPhone X ظرفیت 256 گیگابایت
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-box-row product-box-row-price">
+                            <div class="price">
+                                <div class="price-value">
+                                    <div class="price-value-wrapper">
+                                        ۱۵,۳۹۰,۰۰۰ <span class="price-currency">تومان</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                <div class="product-box">
+                    <div class="product-seller-details product-seller-details-item-grid">
+                        <span class="product-main-seller">
+                            <span class="product-seller-details-label">
+                                فروشنده:
+                            </span>تاپ کالا
+                        </span>
+                        <span class="product-seller-details-badge-container"></span>
+                    </div>
+                    <a class="product-box-img" href="#">
+                        <img src="~/ClientAssets/assets/img/product/4560651.jpg" alt="">
+                    </a>
+                    <div class="product-box-content">
+                        <div class="product-box-content-row">
+                            <div class="product-box-title">
+                                <a href="#">
+                                    گوشی موبایل اپل مدل Apple iPhone XS تک سیم کارت
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-box-row product-box-row-price">
+                            <div class="price">
+                                <div class="price-value">
+                                    <div class="price-value-wrapper">
+                                        ۱۷,۳۴۹,۰۰۰ <span class="price-currency">تومان</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                <div class="product-box">
+                    <div class="product-seller-details product-seller-details-item-grid">
+                        <span class="product-main-seller">
+                            <span class="product-seller-details-label">
+                                فروشنده:
+                            </span>تاپ کالا
+                        </span>
+                        <span class="product-seller-details-badge-container"></span>
+                    </div>
+                    <a class="product-box-img" href="#">
+                        <img src="~/ClientAssets/assets/img/product/5489258.jpg" alt="">
+                    </a>
+                    <div class="product-box-content">
+                        <div class="product-box-content-row">
+                            <div class="product-box-title">
+                                <a href="#">
+                                    گوشی موبایل سامسونگ مدل j4 Plus J415 دو سیم کارت
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-box-row product-box-row-price">
+                            <div class="price">
+                                <div class="price-value">
+                                    <div class="price-value-wrapper">
+                                        ۲,۳۹۰,۰۰۰ <span class="price-currency">تومان</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                <div class="product-box">
+                    <div class="product-seller-details product-seller-details-item-grid">
+                        <span class="product-main-seller">
+                            <span class="product-seller-details-label">
+                                فروشنده:
+                            </span>تاپ کالا
+                        </span>
+                        <span class="product-seller-details-badge-container"></span>
+                    </div>
+                    <a class="product-box-img" href="#">
+                        <img src="~/ClientAssets/assets/img/product/2196691.jpg" alt="">
+                    </a>
+                    <div class="product-box-content">
+                        <div class="product-box-content-row">
+                            <div class="product-box-title">
+                                <a href="#">
+                                    گوشی موبایل سامسونگ مدل J7 Pro SM-J730F
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-box-row product-box-row-price">
+                            <div class="price">
+                                <div class="price-value">
+                                    <div class="price-value-wrapper">
+                                        ۳,۳۰۰,۰۰۰ <span class="price-currency">تومان</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                <div class="product-box">
+                    <div class="product-seller-details product-seller-details-item-grid">
+                        <span class="product-main-seller">
+                            <span class="product-seller-details-label">
+                                فروشنده:
+                            </span>تاپ کالا
+                        </span>
+                        <span class="product-seller-details-badge-container"></span>
+                    </div>
+                    <a class="product-box-img" href="#">
+                        <img src="~/ClientAssets/assets/img/product/2310961.jpg" alt="">
+                    </a>
+                    <div class="product-box-content">
+                        <div class="product-box-content-row">
+                            <div class="product-box-title">
+                                <a href="#">
+                                    گوشی موبایل هوآوی مدل Y7 Prime 2018 دو سیم کارت
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-box-row product-box-row-price">
+                            <div class="price">
+                                <div class="price-value">
+                                    <div class="price-value-wrapper">
+                                        ۲,۳۷۸,۰۰۰ <span class="price-currency">تومان</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                <div class="product-box">
+                    <div class="product-seller-details product-seller-details-item-grid">
+                        <span class="product-main-seller">
+                            <span class="product-seller-details-label">
+                                فروشنده:
+                            </span>تاپ کالا
+                        </span>
+                        <span class="product-seller-details-badge-container"></span>
+                    </div>
+                    <a class="product-box-img" href="#">
+                        <img src="~/ClientAssets/assets/img/product/3694075.jpg" alt="">
+                    </a>
+                    <div class="product-box-content">
+                        <div class="product-box-content-row">
+                            <div class="product-box-title">
+                                <a href="#">
+                                    گوشی موبایل هوآوی مدل Nova 3i INE-LX1M دو سیم کارت
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-box-row product-box-row-price">
+                            <div class="price">
+                                <div class="price-value">
+                                    <div class="price-value-wrapper">
+                                        ۴,۱۳۹,۰۰۰ <span class="price-currency">تومان</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                <div class="product-box">
+                    <div class="product-seller-details product-seller-details-item-grid">
+                        <span class="product-main-seller">
+                            <span class="product-seller-details-label">
+                                فروشنده:
+                            </span>تاپ کالا
+                        </span>
+                        <span class="product-seller-details-badge-container"></span>
+                    </div>
+                    <a class="product-box-img" href="#">
+                        <img src="~/ClientAssets/assets/img/product/1335154.jpg" alt="">
+                    </a>
+                    <div class="product-box-content">
+                        <div class="product-box-content-row">
+                            <div class="product-box-title">
+                                <a href="#">
+                                    گوشی موبایل اپل مدل iPhone X ظرفیت 256 گیگابایت
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-box-row product-box-row-price">
+                            <div class="price">
+                                <div class="price-value">
+                                    <div class="price-value-wrapper">
+                                        ۱۵,۳۹۰,۰۰۰ <span class="price-currency">تومان</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                <div class="product-box">
+                    <div class="product-seller-details product-seller-details-item-grid">
+                        <span class="product-main-seller">
+                            <span class="product-seller-details-label">
+                                فروشنده:
+                            </span>تاپ کالا
+                        </span>
+                        <span class="product-seller-details-badge-container"></span>
+                    </div>
+                    <a class="product-box-img" href="#">
+                        <img src="~/ClientAssets/assets/img/product/4560651.jpg" alt="">
+                    </a>
+                    <div class="product-box-content">
+                        <div class="product-box-content-row">
+                            <div class="product-box-title">
+                                <a href="#">
+                                    گوشی موبایل اپل مدل Apple iPhone XS تک سیم کارت
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-box-row product-box-row-price">
+                            <div class="price">
+                                <div class="price-value">
+                                    <div class="price-value-wrapper">
+                                        ۱۷,۳۴۹,۰۰۰ <span class="price-currency">تومان</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                <div class="product-box">
+                    <div class="product-seller-details product-seller-details-item-grid">
+                        <span class="product-main-seller">
+                            <span class="product-seller-details-label">
+                                فروشنده:
+                            </span>تاپ کالا
+                        </span>
+                        <span class="product-seller-details-badge-container"></span>
+                    </div>
+                    <a class="product-box-img" href="#">
+                        <img src="~/ClientAssets/assets/img/product/5489258.jpg" alt="">
+                    </a>
+                    <div class="product-box-content">
+                        <div class="product-box-content-row">
+                            <div class="product-box-title">
+                                <a href="#">
+                                    گوشی موبایل سامسونگ مدل j4 Plus J415 دو سیم کارت
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-box-row product-box-row-price">
+                            <div class="price">
+                                <div class="price-value">
+                                    <div class="price-value-wrapper">
+                                        ۲,۳۹۰,۰۰۰ <span class="price-currency">تومان</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+            <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                <div class="product-box">
+                    <div class="product-seller-details product-seller-details-item-grid">
+                        <span class="product-main-seller">
+                            <span class="product-seller-details-label">
+                                فروشنده:
+                            </span>تاپ کالا
+                        </span>
+                        <span class="product-seller-details-badge-container"></span>
+                    </div>
+                    <a class="product-box-img" href="#">
+                        <img src="~/ClientAssets/assets/img/product/2196691.jpg" alt="">
+                    </a>
+                    <div class="product-box-content">
+                        <div class="product-box-content-row">
+                            <div class="product-box-title">
+                                <a href="#">
+                                    گوشی موبایل سامسونگ مدل J7 Pro SM-J730F
+                                </a>
+                            </div>
+                        </div>
+                        <div class="product-box-row product-box-row-price">
+                            <div class="price">
+                                <div class="price-value">
+                                    <div class="price-value-wrapper">
+                                        ۳,۳۰۰,۰۰۰ <span class="price-currency">تومان</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>-->
+            @*</ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pager default text-center">
+                        <ul class="pager-items">
+                            <li>
+                                <a class="pager-item is-active" href="#">۱</a>
+                            </li>
+                            <li>
+                                <a class="pager-item" href="#">۲</a>
+                            </li>
+                            <li>
+                                <a class="pager-item" href="#">۳</a>
+                            </li>
+                            <li>
+                                <a class="pager-item" href="#">۴</a>
+                            </li>
+                            <li>
+                                <a class="pager-item" href="#">۵</a>
+                            </li>
+                            <line class="pager-items--partition"></line>
+                            <li>
+                                <a class="pager-next"></a>
+                            </li>
+                        </ul>
+                    </div>
+
+
+                </div>*@
+            <!--bodymain-->
+            <!-- <div class="listing default">
+                <div class="listing-counter">۶,۱۸۸ کالا</div>
+                <div class="listing-header default">
+                </div>
+                <div class="tab-content default text-center">
+                    <div class="tab-pane active" id="related" role="tabpanel" aria-expanded="true">
+                        <div class="container no-padding-right">
+                            <ul class="row listing-items">
+                                <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                                    <div class="product-box">
+                                        <div class="product-seller-details product-seller-details-item-grid">
+                                            <span class="product-main-seller">
+                                                <span class="product-seller-details-label">
+                                                    فروشنده:
+                                                </span>تاپ کالا
+                                            </span>
+                                            <span class="product-seller-details-badge-container"></span>
+                                        </div>
+                                        <a class="product-box-img" href="#">
+                                            <img src="~/ClientAssets/assets/img/product/2310961.jpg" alt="">
+                                        </a>
+                                        <div class="product-box-content">
+                                            <div class="product-box-content-row">
+                                                <div class="product-box-title">
+                                                    <a href="#">
+                                                        گوشی موبایل هوآوی مدل Y7 Prime 2018 دو سیم کارت
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-box-row product-box-row-price">
+                                                <div class="price">
+                                                    <div class="price-value">
+                                                        <div class="price-value-wrapper">
+                                                            ۲,۳۷۸,۰۰۰ <span class="price-currency">تومان</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                                    <div class="product-box">
+                                        <div class="product-seller-details product-seller-details-item-grid">
+                                            <span class="product-main-seller">
+                                                <span class="product-seller-details-label">
+                                                    فروشنده:
+                                                </span>تاپ کالا
+                                            </span>
+                                            <span class="product-seller-details-badge-container"></span>
+                                        </div>
+                                        <a class="product-box-img" href="#">
+                                            <img src="~/ClientAssets/assets/img/product/3694075.jpg" alt="">
+                                        </a>
+                                        <div class="product-box-content">
+                                            <div class="product-box-content-row">
+                                                <div class="product-box-title">
+                                                    <a href="#">
+                                                        گوشی موبایل هوآوی مدل Nova 3i INE-LX1M دو سیم کارت
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-box-row product-box-row-price">
+                                                <div class="price">
+                                                    <div class="price-value">
+                                                        <div class="price-value-wrapper">
+                                                            ۴,۱۳۹,۰۰۰ <span class="price-currency">تومان</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                                    <div class="product-box">
+                                        <div class="product-seller-details product-seller-details-item-grid">
+                                            <span class="product-main-seller">
+                                                <span class="product-seller-details-label">
+                                                    فروشنده:
+                                                </span>تاپ کالا
+                                            </span>
+                                            <span class="product-seller-details-badge-container"></span>
+                                        </div>
+                                        <a class="product-box-img" href="#">
+                                            <img src="~/ClientAssets/assets/img/product/1335154.jpg" alt="">
+                                        </a>
+                                        <div class="product-box-content">
+                                            <div class="product-box-content-row">
+                                                <div class="product-box-title">
+                                                    <a href="#">
+                                                        گوشی موبایل اپل مدل iPhone X ظرفیت 256 گیگابایت
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-box-row product-box-row-price">
+                                                <div class="price">
+                                                    <div class="price-value">
+                                                        <div class="price-value-wrapper">
+                                                            ۱۵,۳۹۰,۰۰۰ <span class="price-currency">تومان</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                                    <div class="product-box">
+                                        <div class="product-seller-details product-seller-details-item-grid">
+                                            <span class="product-main-seller">
+                                                <span class="product-seller-details-label">
+                                                    فروشنده:
+                                                </span>تاپ کالا
+                                            </span>
+                                            <span class="product-seller-details-badge-container"></span>
+                                        </div>
+                                        <a class="product-box-img" href="#">
+                                            <img src="~/ClientAssets/assets/img/product/4560651.jpg" alt="">
+                                        </a>
+                                        <div class="product-box-content">
+                                            <div class="product-box-content-row">
+                                                <div class="product-box-title">
+                                                    <a href="#">
+                                                        گوشی موبایل اپل مدل Apple iPhone XS تک سیم کارت
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-box-row product-box-row-price">
+                                                <div class="price">
+                                                    <div class="price-value">
+                                                        <div class="price-value-wrapper">
+                                                            ۱۷,۳۴۹,۰۰۰ <span class="price-currency">تومان</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                                    <div class="product-box">
+                                        <div class="product-seller-details product-seller-details-item-grid">
+                                            <span class="product-main-seller">
+                                                <span class="product-seller-details-label">
+                                                    فروشنده:
+                                                </span>تاپ کالا
+                                            </span>
+                                            <span class="product-seller-details-badge-container"></span>
+                                        </div>
+                                        <a class="product-box-img" href="#">
+                                            <img src="~/ClientAssets/assets/img/product/5489258.jpg" alt="">
+                                        </a>
+                                        <div class="product-box-content">
+                                            <div class="product-box-content-row">
+                                                <div class="product-box-title">
+                                                    <a href="#">
+                                                        گوشی موبایل سامسونگ مدل j4 Plus J415 دو سیم کارت
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-box-row product-box-row-price">
+                                                <div class="price">
+                                                    <div class="price-value">
+                                                        <div class="price-value-wrapper">
+                                                            ۲,۳۹۰,۰۰۰ <span class="price-currency">تومان</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                                    <div class="product-box">
+                                        <div class="product-seller-details product-seller-details-item-grid">
+                                            <span class="product-main-seller">
+                                                <span class="product-seller-details-label">
+                                                    فروشنده:
+                                                </span>تاپ کالا
+                                            </span>
+                                            <span class="product-seller-details-badge-container"></span>
+                                        </div>
+                                        <a class="product-box-img" href="#">
+                                            <img src="~/ClientAssets/assets/img/product/2196691.jpg" alt="">
+                                        </a>
+                                        <div class="product-box-content">
+                                            <div class="product-box-content-row">
+                                                <div class="product-box-title">
+                                                    <a href="#">
+                                                        گوشی موبایل سامسونگ مدل J7 Pro SM-J730F
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-box-row product-box-row-price">
+                                                <div class="price">
+                                                    <div class="price-value">
+                                                        <div class="price-value-wrapper">
+                                                            ۳,۳۰۰,۰۰۰ <span class="price-currency">تومان</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                                    <div class="product-box">
+                                        <div class="product-seller-details product-seller-details-item-grid">
+                                            <span class="product-main-seller">
+                                                <span class="product-seller-details-label">
+                                                    فروشنده:
+                                                </span>تاپ کالا
+                                            </span>
+                                            <span class="product-seller-details-badge-container"></span>
+                                        </div>
+                                        <a class="product-box-img" href="#">
+                                            <img src="~/ClientAssets/assets/img/product/2310961.jpg" alt="">
+                                        </a>
+                                        <div class="product-box-content">
+                                            <div class="product-box-content-row">
+                                                <div class="product-box-title">
+                                                    <a href="#">
+                                                        گوشی موبایل هوآوی مدل Y7 Prime 2018 دو سیم کارت
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-box-row product-box-row-price">
+                                                <div class="price">
+                                                    <div class="price-value">
+                                                        <div class="price-value-wrapper">
+                                                            ۲,۳۷۸,۰۰۰ <span class="price-currency">تومان</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                                    <div class="product-box">
+                                        <div class="product-seller-details product-seller-details-item-grid">
+                                            <span class="product-main-seller">
+                                                <span class="product-seller-details-label">
+                                                    فروشنده:
+                                                </span>تاپ کالا
+                                            </span>
+                                            <span class="product-seller-details-badge-container"></span>
+                                        </div>
+                                        <a class="product-box-img" href="#">
+                                            <img src="~/ClientAssets/assets/img/product/3694075.jpg" alt="">
+                                        </a>
+                                        <div class="product-box-content">
+                                            <div class="product-box-content-row">
+                                                <div class="product-box-title">
+                                                    <a href="#">
+                                                        گوشی موبایل هوآوی مدل Nova 3i INE-LX1M دو سیم کارت
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-box-row product-box-row-price">
+                                                <div class="price">
+                                                    <div class="price-value">
+                                                        <div class="price-value-wrapper">
+                                                            ۴,۱۳۹,۰۰۰ <span class="price-currency">تومان</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                                    <div class="product-box">
+                                        <div class="product-seller-details product-seller-details-item-grid">
+                                            <span class="product-main-seller">
+                                                <span class="product-seller-details-label">
+                                                    فروشنده:
+                                                </span>تاپ کالا
+                                            </span>
+                                            <span class="product-seller-details-badge-container"></span>
+                                        </div>
+                                        <a class="product-box-img" href="#">
+                                            <img src="~/ClientAssets/assets/img/product/1335154.jpg" alt="">
+                                        </a>
+                                        <div class="product-box-content">
+                                            <div class="product-box-content-row">
+                                                <div class="product-box-title">
+                                                    <a href="#">
+                                                        گوشی موبایل اپل مدل iPhone X ظرفیت 256 گیگابایت
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-box-row product-box-row-price">
+                                                <div class="price">
+                                                    <div class="price-value">
+                                                        <div class="price-value-wrapper">
+                                                            ۱۵,۳۹۰,۰۰۰ <span class="price-currency">تومان</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                                    <div class="product-box">
+                                        <div class="product-seller-details product-seller-details-item-grid">
+                                            <span class="product-main-seller">
+                                                <span class="product-seller-details-label">
+                                                    فروشنده:
+                                                </span>تاپ کالا
+                                            </span>
+                                            <span class="product-seller-details-badge-container"></span>
+                                        </div>
+                                        <a class="product-box-img" href="#">
+                                            <img src="~/ClientAssets/assets/img/product/4560651.jpg" alt="">
+                                        </a>
+                                        <div class="product-box-content">
+                                            <div class="product-box-content-row">
+                                                <div class="product-box-title">
+                                                    <a href="#">
+                                                        گوشی موبایل اپل مدل Apple iPhone XS تک سیم کارت
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-box-row product-box-row-price">
+                                                <div class="price">
+                                                    <div class="price-value">
+                                                        <div class="price-value-wrapper">
+                                                            ۱۷,۳۴۹,۰۰۰ <span class="price-currency">تومان</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                                    <div class="product-box">
+                                        <div class="product-seller-details product-seller-details-item-grid">
+                                            <span class="product-main-seller">
+                                                <span class="product-seller-details-label">
+                                                    فروشنده:
+                                                </span>تاپ کالا
+                                            </span>
+                                            <span class="product-seller-details-badge-container"></span>
+                                        </div>
+                                        <a class="product-box-img" href="#">
+                                            <img src="~/ClientAssets/assets/img/product/5489258.jpg" alt="">
+                                        </a>
+                                        <div class="product-box-content">
+                                            <div class="product-box-content-row">
+                                                <div class="product-box-title">
+                                                    <a href="#">
+                                                        گوشی موبایل سامسونگ مدل j4 Plus J415 دو سیم کارت
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-box-row product-box-row-price">
+                                                <div class="price">
+                                                    <div class="price-value">
+                                                        <div class="price-value-wrapper">
+                                                            ۲,۳۹۰,۰۰۰ <span class="price-currency">تومان</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                                <li class="col-xl-3 col-lg-4 col-md-6 col-12 no-padding">
+                                    <div class="product-box">
+                                        <div class="product-seller-details product-seller-details-item-grid">
+                                            <span class="product-main-seller">
+                                                <span class="product-seller-details-label">
+                                                    فروشنده:
+                                                </span>تاپ کالا
+                                            </span>
+                                            <span class="product-seller-details-badge-container"></span>
+                                        </div>
+                                        <a class="product-box-img" href="#">
+                                            <img src="~/ClientAssets/assets/img/product/2196691.jpg" alt="">
+                                        </a>
+                                        <div class="product-box-content">
+                                            <div class="product-box-content-row">
+                                                <div class="product-box-title">
+                                                    <a href="#">
+                                                        گوشی موبایل سامسونگ مدل J7 Pro SM-J730F
+                                                    </a>
+                                                </div>
+                                            </div>
+                                            <div class="product-box-row product-box-row-price">
+                                                <div class="price">
+                                                    <div class="price-value">
+                                                        <div class="price-value-wrapper">
+                                                            ۳,۳۰۰,۰۰۰ <span class="price-currency">تومان</span>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="pager default text-center">
+                    <ul class="pager-items">
+                        <li>
+                            <a class="pager-item is-active" href="#">۱</a>
+                        </li>
+                        <li>
+                            <a class="pager-item" href="#">۲</a>
+                        </li>
+                        <li>
+                            <a class="pager-item" href="#">۳</a>
+                        </li>
+                        <li>
+                            <a class="pager-item" href="#">۴</a>
+                        </li>
+                        <li>
+                            <a class="pager-item" href="#">۵</a>
+                        </li>
+                        <line class="pager-items--partition"></line>
+                        <li>
+                            <a class="pager-next"></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>-->
+            @*</div>*@
+        }

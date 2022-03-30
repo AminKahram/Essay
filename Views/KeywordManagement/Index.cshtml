@@ -1,0 +1,206 @@
+﻿@model Article.DomainModel.Query.Keyword.KeywordSearchModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+<script>
+    function SuccessMessage(SuccessTxt) {
+        Swal.fire({
+            icon: 'success',
+            title: 'وضعیت ثبت',
+            text: SuccessTxt,
+        });
+    }
+    function ErrorMessage(ErrorTxt) {
+        Swal.fire({
+            icon: 'error',
+            title: 'خطا',
+            text: ErrorTxt,
+        });
+    }
+</script>
+<script>
+    function BindGrid() {
+        $(".btnSearch").click();
+    }
+    $(document).ready(function () {
+        $("#KeywordName").keyup(function () {
+            $(".btnSearch").click();
+        });
+        $(".btnSearch").click(function (e) {
+            var IsAjax = $(this).attr("data-IsAjax");
+            var SU = $(this).attr("data-Action");
+            var frmID = $(this).attr("data-form");
+            var SD = $(frmID).serialize();
+            //var Method = $(this).attr("data-Method");
+            var Target = $(this).attr("data-target");
+            if (IsAjax === "True") {
+                e.preventDefault();
+                $.get(SU, SD, function (rc) {
+                    $(Target).html(rc);
+                });
+            }
+        });
+        $("#PageIndex").change(function () {
+            $(".btnSearch").click();
+        });
+    });
+</script>
+<script>
+    function hideModal() {
+        $("#KeywordAddEditModal").modal("hide");
+    };
+    $(document).on("submit", "#frmAddNew", function (e) {
+            e.preventDefault();
+            var SU = '@Url.Action("Add", "KeywordManagement")';
+            var SD = $("#frmAddNew").serialize();
+            $.post(SU, SD, function (operationResult) {
+
+                if (operationResult.succes) {
+                    SuccessMessage(operationResult.message);
+                    BindGrid();
+                    hideModal()
+                }
+                else {
+                    ErrorMessage(operationResult.message);
+                    hideModal()
+
+                }
+            });
+    });
+    $(document).on("submit", "#frmUpdate", function (e) {
+        e.preventDefault();
+        var SU = '@Url.Action("Update", "KeywordManagement")';
+        var frm = $("#frmUpdate");
+        var SD = $(frm).serialize();
+        $.post(SU, SD, function (operationResult) {
+
+            if (operationResult.succes) {
+                SuccessMessage(operationResult.message);
+                BindGrid();
+                hideModal()
+            }
+            else {
+                ErrorMessage(operationResult.message);
+            }
+        });
+
+
+    });
+
+        //common js
+    $(document).on("click", ".btnEdit", function () {
+        var SU = $(this).attr("data-action");
+        var id = $(this).attr("data-id");
+        var T = $(this).attr("data-target");
+        var M = $(this).attr("data-target-Modal");
+        var SD = "id=" + id;
+        $.get(SU, SD, function (rc) {
+            $(T).html(rc);
+            $(M).modal("show");
+        });
+    });
+    $(document).on("click", "#btnAdd", function () {
+        var SU = $(this).attr("data-Action");
+        var SD = null;
+        var T = $(this).attr("data-target");
+        var M = $(this).attr("data-Modal");
+        $.get(SU, SD, function (rc) {
+            $(T).html(rc);
+            $(M).modal("show");
+        });
+    });
+    $(document).on("click", ".btnDelete", function () {
+        if (confirm("Are you sure you want to delete this record ?")) {
+            var SU = $(this).attr("data-action");
+            var id = $(this).attr("data-id");
+            var SD = "id=" + id;
+            $.post(SU, SD, function (operationResult) {
+                if (operationResult.succes) {
+                    SuccessMessage(operationResult.message);
+                    BindGrid();
+
+                }
+                else {
+                    ErrorMessage(operationResult.message);
+                }
+            });
+        }
+    });
+    $(document).on("click", "#btnCancel", function () {
+        hideModal();
+    });
+
+    function BindGrid() {
+        $(".btnSearch").click();
+    }
+</script>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index" asp-controller="KeywordManagement" id="frmSearchKeyword">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                @{
+                    if (TempData["ErrorMessage"] != null)
+                    {
+                        <h3 style="color:red;">@TempData["ErrorMessage"]</h3>
+                    }
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="KeywordName" class="control-label"></label>
+                <input asp-for="KeywordName" class="form-control" />
+            </div>
+            <select type="button" asp-for="PageIndex">
+                @await Component.InvokeAsync("Pager", @TempData["PageCountKeyword"])
+            </select>
+            <div class="form-group">
+                <span class="btn btn-success " id="btnAdd" data-Action="@Url.Action("Add","KeywordManagement")" data-target="#dvContent" data-Modal="#KeywordAddEditModal">Add</span>
+                <input type="submit" value="Search" class="btn btn-primary btnSearch" data-IsAjax="True" data-action="@Url.Action("Search","KeywordManagement")" data-form="#frmSearchKeyword" data-target="#dvGrid" />
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8">
+        <div id="dvGrid">
+            @await Component.InvokeAsync("KeywordList", Model)
+        </div>
+    </div>
+
+</div>
+<!-- Modal -->
+@*<div class="modal fade" id="KeywordAddEditModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" id="dvContent">
+
+            </div>
+
+        </div>
+    </div>
+</div>*@
+<!-- Modal -->
+<div class="modal fade" id="KeywordAddEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Author Add Edit</h4>
+            </div>
+            <div class="modal-body" id="dvContent">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@*@section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }*@

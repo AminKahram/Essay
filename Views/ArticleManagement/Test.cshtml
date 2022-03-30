@@ -1,0 +1,429 @@
+﻿<!--{
+    Layout = null;
+}
+<style>
+    .CloseItem {
+        /* position: relative; */
+        z-index: 10;
+        display: flex;
+        /* right: 38px; */
+        /* top: 32px
+    px
+    ; */
+        width: 20px;
+        height: 32px;
+        opacity: 0.3;
+        flex-direction: column;
+        align-content: center;
+        justify-content: center;
+        align-items: center;
+    }
+
+        .CloseItem:hover {
+            opacity: 1;
+        }
+
+        .CloseItem:before, .CloseItem:after {
+            position: absolute;
+            left: 15px;
+            content: ' ';
+            height: 20px;
+            width: 2px;
+            background-color: #333;
+        }
+
+        .CloseItem:before {
+            transform: rotate(45deg);
+        }
+
+        .CloseItem:after {
+            transform: rotate(-45deg);
+        }
+</style>
+<script>
+    //$(document).ready(function () {
+    //    $("#txtProductName").keyup(function () {
+    //        var ProductName = $("#txtProductName").val();
+    //        if (ProductName != null && ProductName.length > 0) {
+    //            var sendingUrl = "https://localhost:44386/Product/SearchProductAutoExpandcsr";
+    //            var sendingData = "ProductName=" + ProductName;
+    //            $.get(sendingUrl,
+    //                sendingData,
+    //                function (data) {
+    //                    buildSearchResultBasedOnData(data);
+
+    //                    $("#dvContent").slideDown();
+    //                });
+    //        } else {
+    //            $("#dvContent").slideUp();
+    //        }
+    //    });
+
+    //});
+
+    function buildSearchResultBasedOnData(data) {
+
+        let str = "<table>";
+        for (var i = 0; i < data.length; i++) {
+
+            str = str + `<tr><td> <a href='#' onclick='showDetails("${data[i].ProductName}")'>${data[i].ProductName}</a></td></tr>`;
+        }
+        str = str + "</table>";
+        console.log(str);
+        $("#dvContent").html(str);
+    }
+</script>
+<script>
+    //var myid = "";
+
+    //$(document).ready(function () {
+
+    //    $("#AuthorSearch").keyup(function () {
+    //        var SU = $(this).attr("data-Action");
+    //        var txt = $(this).val();
+    //        var SD = "AuthorName=" + txt.toString();
+    //        var T = $(this).attr("data-target");
+
+    //        $.get(SU, SD, function (rc) {
+    //            $(T).html(rc);
+    //        });
+
+    //    });
+    //    $('.AuthorsCheckBox').click(function () {
+
+    //        if ($(this).is(":checked")) {
+    //            console.log($(this).val());
+    //        }
+
+
+    //    });
+    //    $(".btnshow").click(function () {
+    //        $('.AuthorsCheckBox').each(function () {
+
+    //            if ($(this).is(":checked")) {
+    //                var $thisId = $(this).val() + ",";
+    //                var main_str = myid;
+    //                if (!main_str.includes($thisId)) {
+    //                    myid = myid + $(this).val() + ",";
+    //                }
+    //            } else {
+    //                var $thisId = $(this).val() + ",";
+    //                var main_str = myid;
+    //                if (main_str.includes($thisId)) {
+    //                    myid = myid.replace($(this).val() + ",", "");
+    //                }
+    //            }
+
+    //        });
+    //        $("#AuthorID").val(myid);
+    //    });
+
+    //});
+
+</script>
+<style>
+    .arrow-down {
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-top: 5px solid #818182;
+    }
+
+    .arrow-up {
+        width: 0;
+        height: 0;
+        border-left: 5px solid transparent;
+        border-right: 5px solid transparent;
+        border-bottom: 5px solid black;
+    }
+
+    .myMultiSelect {
+        width: 50%;
+    }
+
+    .myMultiSelectSearch {
+        border: 1px solid grey;
+        width: 200px;
+        display: flex;
+        height: 30px;
+        border-radius: 5px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        align-content: space-around;
+        justify-content: flex-start;
+        align-items: center;
+        position: relative;
+    }
+
+    .myMultiSelect_items {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        position: absolute;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: flex-start;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+
+        .myMultiSelect_items > .myMultiSelect_item {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-content: flex-start;
+            justify-content: flex-start;
+            align-items: center;
+        }
+
+            .myMultiSelect_items > .myMultiSelect_item > input {
+                margin-right: 10px;
+            }
+
+    .btnshow {
+        position: absolute;
+        top: 135px;
+    }
+
+    #AuthorSearch {
+        border: none;
+        outline: none;
+    }
+
+    .SelectItemBox {
+        min-height: 42px;
+        border: 1px solid #e0e0e0;
+        width: 100%;
+        background-color: #fff;
+        text-align: right;
+        cursor: pointer;
+        float: right;
+        padding: 2px;
+    }
+
+        .SelectItemBox > .SelctedItems {
+        }
+
+            .SelectItemBox > .SelctedItems > .SelectedItem {
+                display: inline-flex;
+                position: relative;
+                left: 0;
+                top: 0;
+                height: 32px;
+                /* width: 100%; */
+                /* width: 51px; */
+                float: left;
+                background-color: #3797dd;
+                color: #fff;
+                padding: 4px 10px 4px 10px;
+                border-radius: 2px;
+                margin: 2px;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-content: flex-start;
+                justify-content: flex-start;
+                align-items: center;
+            }
+
+                .SelectItemBox > .SelctedItems > .SelectedItem > .SelectedItemText {
+                    display: flex;
+                    flex-direction: row;
+                    flex-wrap: nowrap;
+                    align-content: flex-start;
+                    justify-content: flex-start;
+                    align-items: flex-start;
+                }
+</style>
+<script>
+    //$(document).ready(function () {
+    //    alert("yo");
+    //    //$(".multiselectDrp-search").click(function () {
+    //    //    //var element = document.get(".multiselectDrp-search");
+    //    //    alert("yo");
+    //    //    $(this).toggleClass("multiselectDrp-search-click");
+    //    //});
+    //});
+    $(document).on("click", ".multiselectDrp-search", function () {
+        alert("yo");
+    })
+    function buildSearchResultBasedOnData(data) {
+
+        let str = "<table>";
+        for (var i = 0; i < data.length; i++) {
+
+            str = str + `<tr><td> <a href='#' onclick='showDetails("${data[i].ProductName}")'>${data[i].ProductName}</a></td></tr>`;
+        }
+        str = str + "</table>";
+        console.log(str);
+        $("#dvContent").html(str);
+    }
+
+</script>
+
+    <style>
+        .multiselectDrp-search {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 0.01em 16px;
+            align-content: flex-start;
+            justify-content: flex-start;
+            align-items: center;
+            height: fit-content;
+            width: 200px;
+            border-radius: 16px;
+            border: 1px solid #ccc !important;
+            /*border-bottom: none !important;
+            border-radius: 16px 16px 0px 0px;*/
+        }
+
+        .multiselectDrp-search-click {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            padding: 0.01em 16px;
+            align-content: flex-start;
+            justify-content: flex-start;
+            align-items: center;
+            height: fit-content;
+            width: 200px;
+            border-bottom: none !important;
+            border-radius: 16px 16px 0px 0px !important;
+        }
+
+        .multiselectDrp-search > .multiselectDrp-search-selected {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-content: flex-start;
+            justify-content: flex-start;
+            align-items: center;
+            width: 50px;
+            margin: 2px;
+            border: 1px solid steelblue !important;
+            border-radius: 16px;
+            padding: 0.08em 16px;
+            background-color: steelblue;
+        }
+
+            .multiselectDrp-search > .multiselectDrp-search-selected > span {
+                font-family: cursive;
+                margin-right: 10px;
+            }
+
+        .multiselectDrp-wrapper {
+            border: 1px solid #ccc !important;
+            border-top: none !important;
+            border-radius: 0 0 16px 16px;
+            padding: 0.01em 16px;
+            height: fit-content;
+            width: 200px;
+        }
+
+            .multiselectDrp-wrapper > .multiselectDrp-select {
+                border-top: 1px solid #ccc !important;
+                padding: 5px;
+            }
+    </style>
+    <div class="multiselectDrp-search">
+        <div class="multiselectDrp-search-selected"><span>x</span>test</div>
+    </div>
+    <div class="multiselectDrp-wrapper">
+        <div class="multiselectDrp-select">test</div>
+    </div>
+<!--<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>فرم پیشرفته | کنترل پنل</title>-->
+<!--@*Tell the browser to be responsive to screen width*@-->
+<!--<!--<meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">-->
+<!--@*Bootstrap 3.3.7*@-->
+<!--<!--<link href="~/topkala-admin/dist/css/bootstrap-theme.css" rel="stylesheet" />-->
+<!--@*Bootstrap rtl*@-->
+<!--<!--<link rel="stylesheet" href="~/topkala-admin/dist/css/rtl.css">-->
+<!-- Select2 -->
+<!--<link rel="stylesheet" href="~/topkala-admin/bowercomponents/select2/dist/css/select2.min.css">-->
+<!-- Theme style -->
+<!--<link rel="stylesheet" href="~/topkala-admin/dist/css/AdminLTE.css">
+
+</head>
+
+<body class="hold-transition skin-blue sidebar-mini">
+    <div class="wrapper">-->
+<!-- Content Wrapper. Contains page content -->
+<!--<div class="content-wrapper">-->
+<!-- Main content -->
+<!--<section class="content">-->
+<!-- SELECT2 EXAMPLE -->
+<!--<div class=" box-default">
+
+    <div class="box-body">
+        <div class="row">-->
+<!-- /.col -->
+<!--<div class="col-md-6">
+                            <div class="form-group">
+                                <label>چند انتخابی</label>
+                                <select class="form-control select2" multiple="multiple" data-placeholder="Select a State"
+                                        style="width: 100%;">
+                                    <option>تهران</option>
+                                    <option>مشهد</option>
+                                    <option>اصفهان</option>
+                                    <option>شیراز</option>
+                                    <option>اهواز</option>
+                                    <option>تبریز</option>
+                                    <option>کرج</option>
+                                </select>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+</div>-->
+<!-- jQuery 3 -->
+<!--<script src="~/topkala-admin/bowercomponents/jquery/dist/jquery.min.js"></script>-->
+<!-- Bootstrap 3.3.7 -->
+<!--<script src="~/topkala-admin/bowercomponents/bootstrap/dist/js/bootstrap.min.js"></script>-->
+<!-- Select2 -->
+<!--<script src="~/topkala-admin/bowercomponents/select2/dist/js/select2.full.min.js"></script>-->
+<!-- Page script -->
+<!--<script>
+
+        $(function () {
+            //Initialize Select2 Elements
+            $('.select2').select2()
+
+        })
+    </script>
+</body>-->
+
+<!--@*<div class="myMultiSelect">
+    <form asp-action="DrpSeearch" asp-controller="AuthorManagement" id="frmSearch"></form>
+    <div class="SelectItemBox">
+        <div class="SelctedItems">
+    <span class="SelectedItem"></span>
+
+    <div class="SelectedItem "> <span class="CloseItem"></span><div class="SelectedItemText">Test</div></div>
+            </div>
+        </div>
+        <div class="myMultiSelectSearch">
+
+
+            <input type="text" id="AuthorSearch" data-Action="@Url.Action("DrpSeearch","AuthorManagement")" data-Method="get" data-form="#frmSearch" data-target="#dvContent" />
+            <label class="arrow-down" for="AuthorSearch"></label>
+
+        </div>
+
+
+        <div id="dvContent">
+            @await Component.InvokeAsync("AuthorDrp")
+
+        </div>
+        <div class="btn btn-dark btnshow">show</div>
+
+        </div>*@-->

@@ -1,0 +1,558 @@
+﻿@model Article.DomainModel.Query.Article.ArticleSearchModel
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+@*@{
+        var pagecount = Model.PageCount;
+    }*@
+<style>
+    .multiselectDrp-search {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 0;
+        align-content: flex-start;
+        justify-content: flex-start;
+        align-items: center;
+        height: fit-content;
+        width: fit-content;
+        border-radius: 16px;
+        border: 1px solid #ccc !important;
+        min-height: 35px;
+        /*        overflow: hidden;
+        max-height: 65px;
+        overflow-y: auto;*/
+    }
+
+        .multiselectDrp-search > .multiselectDrp-colected {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+            .multiselectDrp-search > .multiselectDrp-colected > .multiselectDrp-search-selected {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-content: flex-start;
+                justify-content: flex-start;
+                align-items: center;
+                width: fit-content;
+                margin: 2px;
+                border: 1px solid steelblue !important;
+                border-radius: 16px;
+                padding: 0.08em 16px;
+                background-color: steelblue;
+                color: white;
+            }
+
+        .multiselectDrp-search > .multiselectDrp-search-text {
+            display: flex !important;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-content: flex-start;
+            justify-content: flex-start;
+            align-items: center;
+            width: 99px;
+            outline: 0;
+            margin: 5px !important;
+            border: 0;
+        }
+
+    .multiselectDrp-search-click {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0;
+        align-content: flex-start;
+        justify-content: flex-start;
+        align-items: center;
+        height: fit-content;
+        width: 200px;
+    }
+
+    .multiselectDrp-search > .multiselectDrp-colected > .multiselectDrp-search-selected > a {
+        font-family: cursive;
+        margin-left: 10px;
+        line-height: 1;
+        text-decoration: none;
+        color: white;
+    }
+
+        .multiselectDrp-search > .multiselectDrp-colected > .multiselectDrp-search-selected > a:hover {
+            color: #ccc
+        }
+
+    .multiselectDrp-wrapper {
+        border: 1px solid #ccc !important;
+        border-top: none !important;
+        padding: 0.01em 16px;
+        height: fit-content;
+        width: 200px;
+        display: none;
+        padding: 0;
+        overflow: hidden;
+        border-radius: 16px;
+    }
+
+    .multiselectDrp-wrapper-toggle-show {
+        display: flex !important;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: flex-start;
+        justify-content: flex-start;
+        align-items: stretch;
+        overflow: hidden;
+        max-height: 94px;
+        overflow-y: auto;
+    }
+
+    .multiselectDrp-wrapper > .multiselectDrp-select {
+        border-top: 1px solid #ccc !important;
+        padding: 5px;
+        color: black;
+        text-decoration: none;
+    }
+
+        .multiselectDrp-wrapper > .multiselectDrp-select:hover {
+            background-color: #3c8dbc;
+        }
+
+    .multiselectDrp-select-toggle {
+        background-color: #ccc;
+    }
+
+    .multiselectDrp-wrapper > .multiselectDrp-select > span {
+        margin-left: 5px;
+    }
+</style>
+<script>
+    $(document).on("click", ".authorDrp-search", function () {
+        var T = $(this).attr("data-list");
+        $(".authorDrp-search").toggleClass("multiselectDrp-search-click");
+        $(T).toggleClass("multiselectDrp-wrapper-toggle-show");
+    });
+    $(document).on("click", ".keywordDrp-search", function () {
+        var T = $(this).attr("data-list");
+        $(".keywordDrp-search").toggleClass("multiselectDrp-search-click");
+        $(T).toggleClass("multiselectDrp-wrapper-toggle-show");
+    });
+    $(document).on("click", ".author-select", function () {
+        var T = $(this).attr("data-list");
+        var S = $(this).attr("data-search");
+        $(T).toggleClass("multiselectDrp-wrapper-toggle-show");
+        $(S).toggleClass("multiselectDrp-search-click");
+    });
+    $(document).on("click", ".keyword-select", function () {
+        var T = $(this).attr("data-list");
+        var S = $(this).attr("data-search");
+        $(T).toggleClass("multiselectDrp-wrapper-toggle-show");
+        $(S).toggleClass("multiselectDrp-search-click");
+    });
+</script>
+<script>
+    var myid = "";
+    var myidkey = "";
+    $(document).on("click", ".author-select", function () {
+        var T = $(this).attr("data-target");
+        var thisId = $(this).attr("data-id") + ",";
+        var thisValue = $(this).attr("data-value");
+        var idtest = myid;
+        if (!idtest.includes(thisId)) {
+            myid = myid + thisId;
+            buildSearchResultBasedOnDataForAuthor(thisValue, thisId);
+        } else {
+            myid = myid.replace(thisId, "");
+            var str = `[data-item-value="${thisValue}"]`;
+            RemoveBasedOnData(str);
+        }
+        console.log(myid);
+        $(T).val(myid);
+    });
+    $(document).on("click", ".keyword-select", function () {
+        var T = $(this).attr("data-target");
+        var thisId = $(this).attr("data-id") + ",";
+        var thisValue = $(this).attr("data-value");
+        var idtest = myidkey;
+        if (!idtest.includes(thisId)) {
+            myidkey = myidkey + thisId;
+            buildSearchResultBasedOnDataForKeyword(thisValue, thisId);
+        } else {
+            myidkey = myidkey.replace(thisId, "");
+            var str = `[data-item-value="${thisValue}"]`;
+            RemoveBasedOnData(str);
+        }
+        console.log(myidkey);
+        $(T).val(myidkey);
+    });
+    $(document).on('click', '.author-selected', function () {
+        var thisid = $(this).attr("data-id");
+        var T = $(this).attr("data-target");
+        var thisvalue = $(this).attr("data-item-value");
+        myid = myid.replace(thisid, "");
+        $(T).val(myid);
+        $(this).closest('div').remove();
+
+    });
+    $(document).on('click', '.keyword-selected', function () {
+        var thisid = $(this).attr("data-id");
+        var T = $(this).attr("data-target");
+        var thisvalue = $(this).attr("data-item-value");
+        myidkey = myidkey.replace(thisid, "");
+        $(T).val(myidkey);
+        $(this).closest('div').remove();
+    });
+    function buildSearchResultBasedOnDataForAuthor(value, id) {
+        let test = `<div href="#" class="multiselectDrp-search-selected" ><a href="#" class="multiselectDrp-search-selected-remove author-selected" data-target="#AuthorID" data-id="${id}" data-item-value="${value}">x</a><span>${value}</span></div>`;
+        console.log(test);
+        $(".authorDrp-search >.multiselectDrp-colected").append(test);
+    }
+    function buildSearchResultBasedOnDataForKeyword(value, id) {
+        let test = `<div href="#" class="multiselectDrp-search-selected"><a href="#" class="multiselectDrp-search-selected-remove keyword-selected" data-target="#KeywordID" data-id="${id}" data-item-value="${value}" >x</a><span>${value}</span></div>`;
+        console.log(test);
+        $(".keywordDrp-search >.multiselectDrp-colected").append(test);
+    }
+
+    function RemoveBasedOnData(str) {
+        $(str).closest('div').remove();
+    }
+</script>
+<script>
+    $("#ArticleSubject").keyup(function () {
+        $(".btnSearch").click();
+    });
+</script>
+<script>
+    function SuccessMessage(SuccessTxt) {
+        Swal.fire({
+            icon: 'success',
+            title: 'وضعیت ثبت',
+            text: SuccessTxt,
+        });
+    }
+    function ErrorMessage(ErrorTxt) {
+        Swal.fire({
+            icon: 'error',
+            title: 'خطا',
+            text: ErrorTxt,
+        });
+    }
+</script>
+<script>
+    function BindGrid() {
+        $(".btnSearch").click();
+    };
+    function hideModal() {
+        $("#AddEditModal").modal("hide");
+    }
+    $(document).on("click", "#btnCancel", function () {
+        hideModal();
+    });
+    $(document).on("click", "#btnAdd", function () {
+        myid = "";
+        myidkey = "";
+        var SU = $(this).attr("data-Action");
+        var SD = null;
+        var T = $(this).attr("data-target");
+        var M = $(this).attr("data-Modal");
+        $.get(SU, SD, function (rc) {
+            $(T).html(rc);
+            $(M).modal("show");
+        });
+    });
+    $(document).on("click", ".btnDelete", function () {
+        if (confirm("Are you sure you want to delete this record ?")) {
+            var SU = $(this).attr("data-action");
+            var id = $(this).attr("data-id");
+            var imgname = $(this).attr("data-img-name");
+            var SD = "id=" + id + "&imgname=" + imgname;
+            $.post(SU, SD, function (operationResult) {
+                if (operationResult.succes) {
+                    SuccessMessage(operationResult.message);
+                    BindGrid();
+
+                }
+                else {
+                    ErrorMessage(operationResult.message);
+                }
+            });
+        }
+
+    });
+    $(document).on("click", ".btnEdit", function () {
+        myid = "";
+        myidkey = "";
+        var SU = $(this).attr("data-action");
+        var id = $(this).attr("data-id");
+        var T = $(this).attr("data-target");
+        var M = $(this).attr("data-target-Modal");
+        var SD = "id=" + id;
+        $.get(SU, SD, function (rc) {
+            $(T).html(rc);
+            $(M).modal("show");
+        });
+    });
+
+</script>
+<script>
+    function BindGridKeyword(articleid) {
+        var SU = '@Url.Action("GetKeywords","ArticleManagement")';
+        var id = articleid;
+        var SD = "id=" + id;
+        var Target = $(".KeywordGrid");
+        $.get(SU, SD, function (rc) {
+            $(Target).html(rc);
+        });
+    }
+    function BindGridAuthor(articleid) {
+        var SU = '@Url.Action("GetAuthors","ArticleManagement")';
+        var id = articleid;
+        var SD = "id=" + id;
+        var Target = $(".AuthorGrid");
+        $.get(SU, SD, function (rc) {
+            $(Target).html(rc);
+        });
+    }
+
+    $(document).ready(function () {
+        $(".btnSearch").click(function (e) {
+            var SU = $(this).attr("data-Action");
+            var frmID = $(this).attr("data-form");
+            var SD = $(frmID).serialize();
+            var Target = $(this).attr("data-target");
+                e.preventDefault();
+                $.get(SU, SD, function (rc) {
+                    $(Target).html(rc);
+                });
+
+        });
+        $("#ArticleSubject").keyup(function () {
+            $(".btnSearch").click();
+        });
+         $(".author-search").keyup(function () {
+            var SearchText = $(".author-search").val();
+            //var Searcheddata = $(`[data-slide-author="${SearchText}"]`).prop('outerHTML');
+            //if (Searcheddata.includes(SearchText)) {
+            //    $(".author-Drp").html(Searcheddata);
+            //    $(".author-Drp").addClass("multiselectDrp-wrapper-toggle-show");
+            //    //myid = myid + thisId;
+            //    ////myvalue = myvalue + $thisValue;
+            //    //buildSearchResultBasedOnDataForAuthor($thisValue, thisId);
+            //}
+            //$('#the_list_item').prop('outerHTML');
+            //console.log(Searcheddata);
+            /*if (SearchText == null || SearchText.length >= 0) {*/
+            var sendingUrl = $(this).attr("data-action");
+            var SendingRoute = $(this).attr("data-sending");
+            var sendingData = SendingRoute + "=" + SearchText;
+            $.get(sendingUrl,
+                sendingData,
+                function (data) {
+                    $(".author-Drp").html(data);
+                    $(".author-Drp").addClass("multiselectDrp-wrapper-toggle-show");
+                    //    $(".multiselectDrp-wrapper").slideDown();
+                });
+            /*}*/
+        });
+        $(".keyword-search").keyup(function () {
+            var SearchText = $(".keyword-search").val();
+
+            var sendingUrl = $(this).attr("data-action");
+            var SendingRoute = $(this).attr("data-sending");
+            var sendingData = SendingRoute + "=" + SearchText;
+            $.get(sendingUrl,
+                sendingData,
+                function (data) {
+                    $(".keyword-Drp").html(data);
+                    $(".keyword-Drp").addClass("multiselectDrp-wrapper-toggle-show");
+                    //    $(".multiselectDrp-wrapper").slideDown();
+                });
+            /*}*/
+
+        });
+        $("#KeywordSelected").change(function () {
+            $(".btnSearch").click();
+        });
+        $("#PageIndex").change(function () {
+            $(".btnSearch").click();
+        });
+    })
+    $(document).on("change","#FirstLayerCat",function () {
+            var ParentID = $("#FirstLayerCat").val();
+        $.get('@Url.Action("GetSubCat", "ArticleManagement")', "ParentID=" + ParentID, function (rc) {
+            $(".subCat").html(rc);
+        });
+    });
+    $(document).on("click", ".btnDeleteKeyword", function () {
+        if (confirm("Are you sure you want to delete this record ?")) {
+            var SU = $(this).attr("data-action");
+            var articleid = $(this).attr("data-article-id");
+            var keywordid = $(this).attr("data-keyword-id");
+            var SD = "ArticleID=" + articleid + "&KeywordID=" + keywordid;
+            $.post(SU, SD, function (operationResult) {
+                if (operationResult.succes) {
+                    SuccessMessage(operationResult.message);
+                    BindGridKeyword(articleid);
+                    BindGrid();
+                }
+                else {
+                    ErrorMessage(operationResult.message);
+                }
+            });
+        }
+    });
+    $(document).on("click", ".btnDeleteAuthor", function () {
+        if (confirm("Are you sure you want to delete this record ?")) {
+            var SU = $(this).attr("data-action");
+            var articleid = $(this).attr("data-article-id");
+            var authorid = $(this).attr("data-author-id");
+            var SD = "ArticleID=" + articleid + "&AuthorID=" + authorid;
+            $.post(SU, SD, function (operationResult) {
+                if (operationResult.succes) {
+                    SuccessMessage(operationResult.message);
+                    BindGridAuthor(articleid);
+                    BindGrid();
+                }
+                else {
+                    ErrorMessage(operationResult.message);
+                }
+            });
+        }
+    });
+    $(document).on("submit", "#frmAddNew", function (e) {
+         e.preventDefault();
+         $("#preLoaderSpinner").css("display", "initial");
+         $("#btnAddNew").css("display", "none");
+         $("#btnCancel").css("display", "none");
+         var formData = new FormData(this);
+         $.ajax({
+             type: "POST",
+             url: "@Url.Action("AddNew", "ArticleManagement")",
+             contentType: false,
+             processData: false,
+             data: formData,
+             success: function (operationResult) {
+                 SuccessMessage(operationResult.message);
+                 $("#preLoaderSpinner").css("display", "none");
+                 BindGrid();
+                 hideModal();
+             },
+             error: function (operationResult) {
+                 ErrorMessage(operationResult.message);
+                 $("#preLoaderSpinner").css("display", "none");
+                 hideModal();
+             }
+         });
+    });
+    $(document).on("submit", "#frmUpdateArtice", function (e) {
+        e.preventDefault();
+        $("#preLoaderSpinner").css("display", "initial");
+        $("#btnEditChanges").css("display", "none");
+        $("#btnCancel").css("display", "none");
+         var formData = new FormData(this);
+         $.ajax({
+             type: "POST",
+             url: "@Url.Action("Update", "ArticleManagement")",
+             contentType: false,
+             processData: false,
+             data: formData,
+             success: function (operationResult) {
+                 SuccessMessage(operationResult.message);
+                 $("#preLoaderSpinner").css("display", "none");
+
+                 BindGrid();
+                 hideModal();
+             },
+             error: function (operationResult) {
+                 ErrorMessage(operationResult.message);
+                 $("#preLoaderSpinner").css("display", "none");
+
+                 hideModal();
+
+             }
+         });
+    });
+    $(document).on("click", ".btnCloseGrid", function () {
+        var showgrid = $(this).attr("data-show-target");
+        var hidegrid = $(this).attr("data-hide-target");
+        $(hidegrid).hide();
+        $(showgrid).show();
+    });
+    $(document).on("click", ".btnKeywords , .btnAuthors", function () {
+        var SU = $(this).attr("data-action");
+        var id = $(this).attr("data-id");
+        var SD = "id=" + id;
+        var T = $(this).attr("data-target");
+        var H = $(this).attr("data-hide-target");
+        $.get(SU, SD, function (rc) {
+            $(H).hide();
+            $(T).show();
+            $(T).html(rc);
+        })
+    });
+</script>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index" asp-controller="ArticleManagement" id="frmSearchArticle">
+            <div>
+                @{
+                    if (TempData["ErrorMessage"] != null)
+                    {
+                        <h3 style="color:red;">@TempData["ErrorMessage"]</h3>
+                    }
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="ArticleSubject" class="control-label"></label>
+                <input asp-for="ArticleSubject" class="form-control" />
+            </div>
+            <div class="form-group">
+                <label asp-for="KeywordSelected" class="control-label"></label>
+                <select class="form-control" asp-for="KeywordSelected">
+                    @await Component.InvokeAsync("KeywordDrpSearch")
+                </select>
+            </div>
+            <select type="button" asp-for="PageIndex">
+                @await Component.InvokeAsync("Pager", @TempData["PageCountArticle"])
+            </select>
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-primary btnSearch" data-IsAjax="True" data-action="@Url.Action("Search","ArticleManagement")" data-target="#dvGrid" data-form="#frmSearchArticle" />
+                <span class="btn btn-success " id="btnAdd" data-Action="@Url.Action("AddNew", "ArticleManagement")" data-target="#dvContent" data-Modal="#AddEditModal">Add</span>
+            </div>
+        </form>
+    </div>
+    <div class="col-md">
+        <div id="dvGrid" class="ArticleGrid">
+            @await Component.InvokeAsync("ArticleList", Model)
+        </div>
+        <div class="KeywordGrid">
+
+        </div>
+        <div class="AuthorGrid">
+
+        </div>
+    </div>
+  
+
+</div>
+    <!-- Modal -->
+    <div class="modal fade" id="AddEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="myModalLabel">Author Add Edit</h4>
+                </div>
+                <div class="modal-body" id="dvContent">
+                    ...
+                </div>
+            </div>
+        </div>
+    </div>
+    @*@section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }*@

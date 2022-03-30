@@ -1,0 +1,14 @@
+﻿@model Framework.DomainModel.BaseDomainModel.PageModel
+
+@for (int i = 0; i < Model.PageCount; i++)
+{
+    int b = i + 1;
+    <li>
+        <a class="pager-item is-active pageindex" data-value="@i" name="PageIndex" id="PageIndex" data-action href="@Url.Action("ClientMenuSearch","Home",new{PageIndex = @i})">@b</a>
+
+    @*<option value="@i">@b</option>*@
+    </li>
+
+}
+
+

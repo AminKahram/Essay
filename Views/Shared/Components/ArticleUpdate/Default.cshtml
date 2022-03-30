@@ -1,0 +1,223 @@
+﻿@model Essay.ViewModel.Article.ArticleEditViewModel
+<script>
+    function changechildcat() {
+        var ParentID = @Model.ParentID;
+        $.get('@Url.Action("GetSubCat", "ArticleManagement")', "ParentID=" + ParentID, function (rc) {
+            $(".subCat").html(rc);
+            $(".subCat").val(@Model.CategoryID);
+        });
+    };
+    function buildUpdateSearchResultBasedOnDataForAuthor(value, id) {
+        let test = `<div href="#" class="multiselectDrp-search-selected" ><a href="#" class="multiselectDrp-search-selected-remove author-selected" data-target="#AuthorID" data-id="${id}," data-item-value="${value}">x</a><span>${value}</span></div>`;
+        console.log(test);
+        $(".authorDrp-search >.multiselectDrp-colected").append(test);
+    }
+    function buildUpdateSearchResultBasedOnDataForKeyword(value, id) {
+        let test = `<div href="#" class="multiselectDrp-search-selected"><a href="#" class="multiselectDrp-search-selected-remove keyword-selected" data-target="#KeywordID" data-id="${id}," data-item-value="${value}" >x</a><span>${value}</span></div>`;
+        console.log(test);
+        $(".keywordDrp-search >.multiselectDrp-colected").append(test);
+    }
+    function spliterKeyword(value, id) {
+        var splitvalue = `${value}`;
+        var splitid = `${id}`;
+        const myArrayvalue = splitvalue.split(",");
+        const myArrayid = splitid.split(",");
+        for (var i = 0; i < myArrayvalue.length; i++) {
+            var j = i;
+            if (myArrayvalue[i] !== "") {
+                buildUpdateSearchResultBasedOnDataForKeyword(myArrayvalue[i], myArrayid[j]);
+                myidkey = myidkey + myArrayid[j] + ",";
+            };
+        };
+    };
+    function spliterAuthor(value,id) {
+        var splitvalue = `${value}`;
+        var splitid = `${id}`;
+        const myArrayvalue = splitvalue.split(",");
+        const myArrayid = splitid.split(",");
+        for (var i = 0; i < myArrayvalue.length; i++) {
+            var j = i;
+            if (myArrayvalue[i] !== "") {
+                buildUpdateSearchResultBasedOnDataForAuthor(myArrayvalue[i], myArrayid[j]);
+                myid = myid + myArrayid[j] + ",";
+            };
+        };
+    };
+    $(document).ready(function () {
+        $("td .parentID").val(@Model.ParentID);
+        changechildcat();
+        spliterAuthor("@Model.AuthorName", "@Model.AuthorID");
+        spliterKeyword("@Model.KeywordName", "@Model.KeywordID");
+
+    });
+</script>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Update" asp-controller="ArticleManagement" method="post" enctype="multipart/form-data" id="frmUpdateArtice">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div>
+                @{
+                    if (TempData["ErrorMessage"] != null)
+                    {
+                        <h3 style="color:red;">@TempData["ErrorMessage"]</h3>
+                    }
+                }
+            </div>
+            <table class="table tabel-bordered table-hover table-striped table-sm">
+                <tr>
+                    <td><label asp-for="ArticleSubject" class="control-label"></label></td>
+                    <td>
+                        <input asp-for="ArticleSubject" class="form-control" />
+                        <span asp-validation-for="ArticleSubject" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="ArticleImageName" class="control-label"></label></td>
+                    <td>
+                        @{
+                            if (Model.ArticleImageName != null)
+                            {
+                                <div style="background-image:url('Content/Photos/Article/@Model.ArticleImageName');background-position:right;height:200px;background-repeat:no-repeat;background-size:contain;width:200px;position:relative;" alt="@Model.ArticleImageName" id="ArticleImageName" name="ArticleImageName" value="@Model.ArticleImageName">
+                                    <span class="closeimage" data-Path="@Model.ArticleImageName" data-target="#ArticleImageName"></span>
+                                    @*data-Action='Url.Action(" DeleteImageFromRoot","ArticleManagement")'*@
+                                </div>
+                            }
+                            else
+                            {
+                                <div style="background-image:url('Content/Photos/NoImage.jpg');background-position:right;height:200px;background-repeat:no-repeat;background-size:contain;width:200px;position:relative;" alt="NoImage" id="ArticleImageName" name="ArticleImageName" value="NoImage"></div>
+                            }
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="ArticleImage" class="control-label"></label></td>
+                    <td>
+                        <input asp-for="ArticleImage" />
+                        <span asp-validation-for="ArticleImage" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="ArticleFileName" class="control-label"></label></td>
+                    <td>
+                        @{
+                            if (Model.ArticleFileName != null)
+                            {
+                                <!--<div style="background-image:url('Content/Photos/Model.ArticleFileName');background-position:right;height:200px;background-repeat:no-repeat;background-size:contain;width:200px;position:relative;" alt="Model.ArticleImageName" id="ArticleImageName" name="ArticleImageName" value="Model.ArticleImageName">
+                    <span class="closeimage" data-Path="Model.ArticleImageName" data-target="#ArticleImageName"></span>-->
+                                @*data-Action='Url.Action(" DeleteImageFromRoot","ArticleManagement")'*@
+                                <!--</div>-->
+                                <embed src="~/Content/PDFs/@Model.ArticleFileName" type="application/pdf" width="100%" height="200px" />
+
+                            }
+                            else
+                            {
+                                <div style="background-image:url('Content/Photos/NoImage.jpg');background-position:right;height:200px;background-repeat:no-repeat;background-size:contain;width:200px;position:relative;" alt="NoImage" id="ArticleImageName" name="ArticleImageName" value="NoImage"></div>
+                            }
+                        }
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="ArticleFile" class="control-label"></label></td>
+                    <td>
+                        <input asp-for="ArticleFile" />
+                        <span asp-validation-for="ArticleFile" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Size" class="control-label"></label></td>
+                    <td>
+                        <input asp-for="Size" class="form-control" />
+                        <span asp-validation-for="Size" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="PublicationDate" class="control-label"></label></td>
+                    <td>
+                        <input type="date" asp-for="PublicationDate" class="form-control" />
+                        <span asp-validation-for="PublicationDate" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="SmallDescription" class="control-label"></label></td>
+                    <td>
+                        <input asp-for="SmallDescription" class="form-control" />
+                        <span asp-validation-for="SmallDescription" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="Description" class="control-label"></label></td>
+                    <td>
+                        <input asp-for="Description" class="form-control" />
+                        <span asp-validation-for="Description" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="CategoryID" class="control-label"></label></td>
+                    <td>
+                        @*<div class="parentID">
+                    <select class="form-control " id="FirstLayerCat">
+                        await Component.InvokeAsync("CategoryRoot");
+                    </select>
+                </div>*@
+                        <select class="form-control parentID" id="FirstLayerCat">
+                            @await Component.InvokeAsync("CategoryRoot")
+                        </select>
+                        <select class="form-control subCat" asp-for="CategoryID">
+                            @await Component.InvokeAsync("SubCategoryDrp")
+                        </select>
+                        @*<div id="subCat">
+                    <select class="form-control subCat" asp-for="CategoryID">
+                        <option></option>
+                    </select>
+                </div>*@
+                        <span asp-validation-for="CategoryID" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="AuthorID" class="control-label"></label></td>
+                    <td>
+                        <input asp-for="AuthorID" class="form-control" type="hidden" readonly/>
+                        <div class="multiselectDrp-search authorDrp-search" data-list=".author-Drp">
+                            <div class="multiselectDrp-colected">
+
+                            </div>
+
+                            <input class="multiselectDrp-search-text author-search" data-action="@Url.Action("DrpSeearch","AuthorManagement")" data-sending="AuthorName" autocomplete="off" />
+                        </div>
+                        <div class="multiselectDrp-wrapper author-Drp">
+                            @await Component.InvokeAsync("AuthorDrp")
+                        </div>
+                        <span asp-validation-for="AuthorID" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td><label asp-for="KeywordID" class="control-label"></label></td>
+                    <td>
+                        <input asp-for="KeywordID" class="form-control" type="hidden" readonly/>
+                        <div class="multiselectDrp-search keywordDrp-search" data-list=".keyword-Drp">
+                            <div class="multiselectDrp-colected">
+
+                            </div>
+
+                            <input class="multiselectDrp-search-text keyword-search" data-action="@Url.Action("DrpSearch","KeywordManagement")" data-sending="KeywordName" autocomplete="off" />
+                        </div>
+                        <div class="multiselectDrp-wrapper keyword-Drp">
+                            @await Component.InvokeAsync("KeywordDrp")
+                        </div>
+                        <span asp-validation-for="KeywordID" class="text-danger"></span>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2" class="text-center">
+                        <img src="~/Content/Photos/loading2.gif" alt="preLoader" id="preLoaderSpinner" style="display:none" />
+                        <input type="submit" class="btn btn-success" value="Save" id="btnEditChanges" data-action="@Url.Action("Update","ArticleManagement")" data-target-form="#frmUpdateArtice" />
+                        <span class="btn btn-warning" id="btnCancel">Cancel</span>
+                    </td>
+                </tr>
+            </table>
+            <input type="hidden" asp-for="ArticleID" readonly />
+            <input type="hidden" id="" asp-for="ArticleImageName" readonly />
+            <input type="hidden" id="" asp-for="ArticleFileName" readonly />
+        </form>
+    </div>
+</div>

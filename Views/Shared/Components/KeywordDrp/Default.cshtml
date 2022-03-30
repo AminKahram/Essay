@@ -1,0 +1,18 @@
+﻿@model IEnumerable<Article.DomainModel.Query.Keyword.DrpKeywordModel>
+@*<div class="form-group">
+        <select class="form-control select2" multiple="multiple" data-placeholder="Select a State" style="width: 100%;" data-val="true" data-val-required=" * Please enter Keyword!" id="KeywordID" name="KeywordID" value="">
+            @foreach (var item in Model)
+            {
+                <option class="KeywordsCheckBox" value="@item.KeywordID" name="@item.KeywordName">@item.KeywordName</option>
+            }
+
+        </select>
+        <span class="btn btn-info btnSubmitChkKey" data-target=".KeywordsCheckBox" data-value="#KeywordID">Select</span>
+
+    </div>*@
+<!--keyword-select-->
+@foreach (var item in Model)
+{
+    <a href="#" class="multiselectDrp-select keyword-select" data-list=".keyword-Drp" data-search=".keywordDrp-search" data-id="@item.KeywordID" data-value="@item.KeywordName" data-target="#KeywordID"><span>@item.KeywordName</span></a>
+
+}

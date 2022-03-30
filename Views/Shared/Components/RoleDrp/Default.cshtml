@@ -1,0 +1,7 @@
+﻿@model IEnumerable<Security.Domain.Model.Query.DrpRoleModel>
+<option value="0">None</option>
+
+@foreach (var item in Model)
+{
+    <option class="RolesCheckBox" value="@item.RoleID" name="@item.RoleName">@item.RoleName</option>
+}
