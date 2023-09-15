@@ -1,0 +1,122 @@
+﻿@model Essay.ViewModel.Article.ArticleAddViewModel
+<form asp-action="AddNew" asp-controller="ArticleManagement" method="post" id="frmAddNew">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div>
+        @{
+            if (TempData["ErrorMessage"] != null)
+            {
+                <h3 style="color:red;">@TempData["ErrorMessage"]</h3>
+            }
+        }
+    </div>
+    <table class="table tabel-bordered table-hover table-striped table-sm">
+        <tr>
+            <td><label asp-for="ArticleSubject" class="control-label"></label></td>
+            <td>
+                <input asp-for="ArticleSubject" class="form-control" />
+                <span asp-validation-for="ArticleSubject" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="ArticleImage" class="control-label"></label></td>
+            <td>
+                <input asp-for="ArticleImage" />
+                <span asp-validation-for="ArticleImage" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="ArticleFile" class="control-label"></label></td>
+            <td>
+                <input asp-for="ArticleFile"  />
+                <span asp-validation-for="ArticleFile" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Size" class="control-label"></label></td>
+            <td>
+                <input asp-for="Size" class="form-control" />
+                <span asp-validation-for="Size" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="PublicationDate" class="control-label"></label></td>
+            <td>
+                <input type="date" asp-for="PublicationDate" class="form-control" />
+                <span asp-validation-for="PublicationDate" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="SmallDescription" class="control-label"></label></td>
+            <td>
+                <input asp-for="SmallDescription" class="form-control" />
+                <span asp-validation-for="SmallDescription" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="Description" class="control-label"></label></td>
+            <td>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="CategoryID" class="control-label"></label></td>
+            <td>
+                <select class="form-control" id="FirstLayerCat">
+                    @await Component.InvokeAsync("CategoryRoot");
+                </select>
+                <select class="form-control subCat" asp-for="CategoryID">
+                    <option></option>
+                </select>
+                @*<div id="subCat">
+                    <select class="form-control " asp-for="CategoryID">
+                        <option></option>
+                    </select>
+                </div>*@
+                <span asp-validation-for="CategoryID" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="AuthorID" class="control-label"></label></td>
+            <td>
+                <input asp-for="AuthorID" class="form-control" type="hidden" readonly/>
+                <div class="multiselectDrp-search authorDrp-search" data-list=".author-Drp">
+                    <div class="multiselectDrp-colected">
+
+                    </div>
+
+                    <input class="multiselectDrp-search-text author-search" data-action="@Url.Action("DrpSeearch","AuthorManagement")" data-sending="AuthorName" autocomplete="off" />
+                </div>
+                <div class="multiselectDrp-wrapper author-Drp">
+                    @await Component.InvokeAsync("AuthorDrp")
+                </div>
+                <span asp-validation-for="AuthorID" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td><label asp-for="KeywordID" class="control-label"></label></td>
+            <td>
+                <input asp-for="KeywordID" class="form-control" type="hidden" readonly/>
+                <div class="multiselectDrp-search keywordDrp-search" data-list=".keyword-Drp">
+                    <div class="multiselectDrp-colected">
+
+                    </div>
+
+                    <input class="multiselectDrp-search-text keyword-search" data-action="@Url.Action("DrpSearch","KeywordManagement")" data-sending="KeywordName" autocomplete="off" />
+                </div>
+                <div class="multiselectDrp-wrapper keyword-Drp">
+                    @await Component.InvokeAsync("KeywordDrp")
+                </div>
+                <span asp-validation-for="KeywordID" class="text-danger"></span>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2" class="text-center">
+                <img src="~/Content/Photos/loading2.gif" alt="preLoader" id="preLoaderSpinner" style="display:none" />
+                <input type="submit" class="btn btn-success" value="Add New" id="btnAddNew" data-action="@Url.Action("AddNew","ArticleManagement")" data-target-form="#frmAddNew" />
+                <span class="btn btn-warning" id="btnCancel" data-target="#dvContent">Cancel</span>
+            </td>
+        </tr>
+    </table>
+
+</form>

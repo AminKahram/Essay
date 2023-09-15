@@ -1,0 +1,13 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Article.Application.Model\Article.Application.Model.csproj" />
+    <ProjectReference Include="..\Article.DomainModel\Article.DomainModel.csproj" />
+    <ProjectReference Include="..\Framework.Services\Framework.Services.csproj" />
+  </ItemGroup>
+
+</Project>

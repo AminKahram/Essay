@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Article.DomainModel.Query.Author.AuthorListItemForArticleModel>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArticleID)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AuthorName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ArticleID)
+            </td>
+            <td>
+                <span class="btn btn-danger btnDeleteAuthor" data-action="@Url.Action("DeleteAuthorArticleFromArticle","ArticleManagement")" data-article-id="@item.ArticleID" data-author-id="@item.AuthorID">Delete</span>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<span class="btn btn-danger btnCloseGrid" data-show-target=".ArticleGrid" data-hide-target=".AuthorGrid">Close</span>

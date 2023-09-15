@@ -1,0 +1,26 @@
+﻿@model Article.Application.Model.Models.AddEditModels.Keyword.KeywordAddEditModel
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Add" asp-controller="KeywordManagement" method="post" id="frmAddNew">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            @*<div class="form-group">
+                <label asp-for="KeywordID" class="control-label"></label>
+                <input asp-for="KeywordID" class="form-control" />
+                <span asp-validation-for="KeywordID" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="KeywordName" class="control-label"></label>
+                <input asp-for="KeywordName" class="form-control" />
+                <span asp-validation-for="KeywordName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="Add New" id="btnAddNew" data-action="@Url.Action("Add","KeywordManagement")" data-target-form="#frmAddNew" />
+                <span class="btn btn-warning" id="btnCancel" data-target="#dvContent">Cancel</span>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,440 @@
+.default {
+    width: 100%;
+    height: auto;
+    float: right;
+}
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1676px;
+    }
+}
+@media (min-width: 992px) {
+    .container {
+        max-width: 100%;
+    }
+}
+@media (min-width: 768px) {
+    .container {
+        max-width: 100%;
+    }
+}
+@media (min-width: 576px) {
+    .container {
+        max-width: 100%;
+    }
+}
+.account-box {
+/*    background: #fff;
+*/    width: 389px;
+/*    margin: 70px auto;
+*/    /*border: 1px solid #dedede;*/
+/*    box-shadow: 0 12px 12px 0 hsla(0, 0%, 71%, .11);
+*/    position: relative;
+}
+
+    .account-box .logo {
+        width: 156px;
+        height: 60px;
+        position: absolute;
+        left: 50%;
+        bottom: 100%;
+        transform: translate(-50%);
+        text-align: center;
+        line-height: 60px;
+    }
+
+        .account-box .logo img {
+            height: 38px;
+        }
+
+.account-box-title {
+    border-bottom: 1px solid #ececec;
+    color: #656565;
+    padding: 17px 40px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.account-box-content {
+    padding: 0 30px;
+}
+
+    .account-box-content .account-box-message h3 {
+        font-size: 18px;
+    }
+
+    .account-box-content .account-box-message p {
+        font-size: 14px;
+    }
+
+    .account-box-content .form-account {
+        margin-top: 9px;
+        margin-bottom: 9px;
+    }
+    .account-box-content .form-account-row {
+        margin-bottom: 9px;
+        padding-right: 10px;
+        padding-left: 10px;
+    }
+    .account-box-content .ui-input:before {
+        top: 9px;
+    }
+    .account-box-content .ui-input-field,
+    .account-box-content .dk-selectric-input {
+        direction: ltr;
+        color: #777;
+    }
+
+    .account-box-content .ui-input-field,
+    .account-box-content .dk-selectric-input {
+        padding-top: 11px;
+        padding-bottom: 11px;
+        font-family: iranyekan;
+    }
+    .account-box-content .form-account-link {
+        margin: 0;
+        float: left;
+    }
+    .account-box-content .form-account-agree {
+        margin: -3px 0 7px;
+        font-size: 12px;
+        font-size: .857rem;
+        line-height: 2.5;
+        color: #5c5c5c;
+    }
+
+        .account-box-content .form-account-agree label {
+            cursor: pointer;
+        }
+.account-box-footer {
+    border-top: 1px solid rgba(0, 190, 214, .13);
+    padding: 25px 40px 28px;
+    background: rgba(0, 190, 214, .04);
+    text-align: center;
+    font-size: 15px;
+    line-height: 1.467;
+}
+
+.account-box-footer {
+    line-height: 1;
+    padding-top: 23px;
+    padding-bottom: 23px;
+    background: rgba(93, 214, 0, .06);
+    border-top: 1px solid #d7e6bb;
+}
+.account-box-message {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.account-box-message-icon {
+    width: 140px;
+    height: 140px;
+    border-radius: 50%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+    content: "\ea23";
+    font: normal normal normal 32px/1 'Nucleo Outline';
+    display: inline-block;
+    vertical-align: top;
+    background: #ebffde 50% 50% no-repeat;
+}
+
+    .account-box-message-icon::before {
+        font-size: 65px;
+        line-height: 140px;
+        color: #00bfd6;
+    }
+
+.account-box-message h3 {
+    margin-bottom: 20px;
+    color: #444;
+    font-size: 19px;
+    font-size: 1.357rem;
+    line-height: 1.158;
+}
+
+.account-box-message p {
+    font-size: 15px;
+    font-size: 1.071rem;
+    line-height: 2;
+    color: #727272;
+    margin-bottom: 10px;
+}
+
+.account-box-message-links {
+    list-style: none;
+    padding: 0;
+}
+
+    .account-box-message-links li {
+        margin: 7px 0 10px;
+    }
+
+        .account-box-message-links li a {
+            font-size: 18px;
+        }
+
+    .account-box-message-links .btn-link-border {
+        font-size: 15px;
+        line-height: 1.467;
+    }
+
+        .account-box-message-links .btn-link-border:hover {
+            color: #1ca2bd;
+        }
+.verify-phone-number .account-box-footer {
+    background-color: #f5fcfd;
+    border-top: 0;
+}
+.parent-btn {
+    overflow: hidden;
+}
+@media (max-width: 480px) {
+    .account-box {
+        width: 100%;
+    }
+
+    .account-box-title {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .account-box-content {
+        padding: 0 10px;
+    }
+
+    .form-account-title {
+        font-size: 12px;
+    }
+
+    .input-label i:before {
+        right: 10px;
+        top: 17px;
+        font-size: 16px;
+    }
+
+    .input-field::placeholder {
+        font-size: 13px;
+        padding-right: 20px;
+    }
+
+
+    .account-box-content .dk-btn {
+        font-size: 1.286rem;
+        padding: 17px 55px;
+    }
+
+ 
+}
+.form-account-title {
+    color: #656565;
+    margin-bottom: 11px;
+    letter-spacing: -.6px;
+    font-size: 15px;
+    line-height: 1.467;
+}
+
+.form-account-row {
+    margin: 0 -10px 23px;
+}
+
+    .form-account-row.with-icon .input-field.text-right {
+        padding-right: 60px;
+    }
+
+        .form-account-row.with-icon .input-field.text-right::placeholder {
+            padding-right: 0;
+        }
+.form-account-title--inline {
+    display: -ms-inline-flexbox;
+    display: inline-flex;
+    width: 100%;
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+}
+
+.form-account-link {
+    font-size: 13px;
+    font-size: .929rem;
+    line-height: 1.692;
+    margin-top: 25px;
+    margin-bottom: 25px;
+}
+.form-account-submit button {
+    width: 100%;
+}
+
+.form-account .btn-login,
+.form-account .btn-password-change,
+.form-account .btn-user-add,
+.form-account .btn-user-lock {
+    width: 100%;
+    text-align: center;
+}
+
+.form-account-agree {
+    padding-right: 30px;
+    position: relative;
+    font-size: 13px;
+    font-size: .929rem;
+    line-height: 2.77;
+    margin: -7px 0 15px;
+}
+    .form-account-agree .checkbox-form {
+        position: absolute;
+        right: 0;
+        top: 8px;
+    }
+.form-account-row.with-icon .input-field.text-right {
+    padding-right: 60px;
+}
+
+    .form-account-row.with-icon .input-field.text-right::placeholder {
+        padding-right: 0;
+    }
+.input-field {
+    border-radius: 5px;
+    background: #fff;
+    border: 1px solid #c8c8c8;
+    color: #717171;
+    font-size: 14px;
+    line-height: 1.571;
+    padding: 11px 12px;
+    width: 100%;
+    letter-spacing: -.8px;
+    text-align: left;
+    font-family: iranyekan;
+    outline: none;
+}
+
+    .input-field::placeholder {
+        color: #c8c8c8;
+        font-size: 14px;
+        text-align: right;
+        padding-right: 40px;
+    }
+
+.ui-input--account-login .ui-input-field,
+.ui-input--account-login .dk-selectric-input {
+    padding: 16px 52px 15px 12px;
+    font-size: 18px;
+    line-height: 21px;
+    text-align: left;
+}
+
+    .ui-input--account-login .ui-input-field,
+    .ui-input--account-login .dk-selectric-input::placeholder {
+        font-size: 16px;
+    }
+
+.account-box-content .ui-input-field,
+.account-box-content .dk-selectric-input {
+    direction: ltr;
+    color: #777;
+}
+
+.account-box-content .ui-input-field,
+.account-box-content .dk-selectric-input {
+    padding-top: 11px;
+    padding-bottom: 11px;
+    font-family: iranyekan;
+}
+.dk-btn {
+    font-size: 1.286rem;
+    padding: 18px 80px;
+    border-radius: 8px;
+    background-color: #34495e;
+    color: #fff;
+    text-align: center;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+    line-height: 22px;
+    text-decoration: none;
+    margin-top: 5px;
+    font-family: iranyekan;
+}
+
+button.dk-btn {
+    cursor: pointer;
+    outline: none;
+}
+
+.dk-btn:hover {
+    color: #fff;
+}
+
+.dk-btn:before {
+    transition: all .3s ease-in-out;
+    width: 21%;
+    height: 150%;
+    position: absolute;
+    right: -11px;
+    top: -17px;
+    background: hsla(0, 0%, 100%, .21);
+    content: "";
+    border-radius: 50%;
+}
+
+.dk-btn:not(.disabled):not(.is-inactive):not([disabled]):hover:before {
+    width: 900px;
+    height: 900px;
+    right: -450px;
+    top: -450px;
+    transform: unset;
+}
+
+.dk-btn-info {
+    background-color: #00bfd6;
+}
+
+.dk-btn-danger {
+    background-color: #e74c3c;
+}
+
+.dk-btn-success {
+    background-color: #2ecc71;
+}
+
+.dk-btn-grey {
+    background-color: #7a7a7a;
+}
+
+.dk-btn > i {
+    font-size: 25px;
+    position: absolute;
+    right: 15px;
+    top: 15px;
+    color: rgba(255, 255, 255, 0.7);
+    font-style: normal;
+}
+.input-label {
+    position: absolute;
+    display: inline-block;
+    line-height: 22px;
+    outline: none;
+}
+
+    .input-label i:before {
+        position: absolute;
+        right: 17px;
+        top: 12px;
+        color: #929292;
+        font-size: 26px;
+    }
+button.dk-btn {
+    cursor: pointer;
+    outline: none;
+}
+button,
+input,
+optgroup,
+select,
+textarea {
+    font-family: iranyekan;
+}

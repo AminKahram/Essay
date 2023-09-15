@@ -1,0 +1,32 @@
+﻿@model Article.Application.Model.Models.AddEditModels.Author.AuthorAddEditModel
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Update" asp-controller="AuthorManagement" method="post" id="frmUpdate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @*<div class="form-group">
+                <label asp-for="AuthorID" class="control-label"></label>
+                <input asp-for="AuthorID" class="form-control" />
+                <span asp-validation-for="AuthorID" class="text-danger"></span>
+            </div>*@
+            <div class="form-group">
+                <label asp-for="AuthorName" class="control-label"></label>
+                <input asp-for="AuthorName" class="form-control" />
+                <span asp-validation-for="AuthorName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <img src="~/Content/Photos/loading2.gif" alt="preLoader" id="preLoaderSpinner" style="display:none" />
+                <input type="submit" value="Save" id="btnEditChanges" class="btn btn-primary" />
+                <span class="btn btn-warning" id="btnCancel" data-modal="#ArticleUpdate" data-target="#dvContent">Cancel</span>
+            </div>
+
+            <input type="hidden" asp-for="AuthorID" readonly />
+
+        </form>
+
+    </div>
+</div>
+@*@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+}*@

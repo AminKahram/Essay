@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Article.DomainModel.Query.Author.AuthorListItemModel>
+
+<table class="table table-hover table-responsive table-striped ">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AuthorName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ArticleCount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuthorID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AuthorName)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ArticleCount)
+                </td>
+                <td>
+                    <span class="btn btn-danger btnDelete" data-action="@Url.Action("Delete","AuthorManagement")" data-id="@item.AuthorID">Delete</span>
+                    <span class="btn btn-info btnEdit" data-id="@item.AuthorID" data-action="@Url.Action("Update","AuthorManagement")" data-target="#dvContent" data-target-Modal="#AuthorAddEditModal">Edit</span>
+                    <span class="btn btn-primary btnArticles" data-id="@item.AuthorID" data-action="@Url.Action("GetArticles","AuthorManagement")" data-target=".ArticleGrid" data-hide-target=".AuthorGrid">Articles</span>
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+    @*$(document).on("click", ".btnEdit", function () {
+        var SU = $(this).attr("data-action");
+        var id = $(this).attr("data-id");
+        var T = $(this).attr("data-target");
+        var M = $(this).attr("data-target-Modal");
+        var SD = "id=" + id;
+        $.get(SU, SD, function (rc) {
+            $(T).html(rc);
+            $(M).modal("show");
+        });
+    });*@

@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Authentication" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.Cookies" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Framework.Security\Framework.Security.csproj" />
+    <ProjectReference Include="..\Framework.Services\Framework.Services.csproj" />
+    <ProjectReference Include="..\Security.Application.Model\Security.Application.Model.csproj" />
+    <ProjectReference Include="..\Security.Application.Services\Security.Application.Services.csproj" />
+    <ProjectReference Include="..\Security.Domain.Model\Security.Domain.Model.csproj" />
+    <ProjectReference Include="..\Security.Domain.Services\Security.Domain.Services.csproj" />
+  </ItemGroup>
+
+</Project>

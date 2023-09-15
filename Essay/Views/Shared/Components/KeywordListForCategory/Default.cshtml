@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Article.DomainModel.Query.Keyword.KeywordListItemForCategoryModel>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.KeywordID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.KeywordName)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.KeywordID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.KeywordName)
+            </td>
+            <td>
+                <span class="btn btn-danger btnDeleteKeyword" data-action="@Url.Action("DeleteKeywordCategoryFromCategory","CategoryManagement")" data-target=".KeywordGrid" data-action-serach="@Url.Action("GetKeywords","CategoryManagement")" data-category-id="@item.CategoryID" data-keyword-id="@item.KeywordID">Delete</span>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<span class="btn btn-danger btnCloseGrid" data-show-target=".CategoryGrid" data-hide-target=".KeywordGrid">Close</span>

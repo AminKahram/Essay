@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Essay.ViewModel.Category.DrpCategoryListItemView>
+
+<option value="0">None</option>
+@foreach (var item in Model)
+{
+    <option value="@item.CategoryID" name="@item.CategoryName">@item.CategoryName</option>
+}
+@*@{
+    SelectList subcat = (SelectList)ViewBag.subcat;
+}
+<select asp-items="subcat" name="CategoryID" class="form-control"></select>*@
