@@ -1,0 +1,425 @@
+﻿@model Article.DomainModel.Query.Category.CategorySearchModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<script>
+    //common
+    function SuccessMessage(SuccessTxt) {
+        Swal.fire({
+            icon: 'success',
+            title: 'وضعیت ثبت',
+            text: SuccessTxt,
+        });
+    }
+    function ErrorMessage(ErrorTxt) {
+        Swal.fire({
+            icon: 'error',
+            title: 'خطا',
+            text: ErrorTxt,
+        });
+    }
+</script>
+<script>
+    $(document).ready(function () {
+        $("#CategoryName").keyup(function () {
+            $(".btnSearch").click();
+        });
+        //common??
+        $(".btnSearch").click(function (e) {
+            var IsAjax = $(this).attr("data-IsAjax");
+            var SU = $(this).attr("data-Action");
+            var frmID = $(this).attr("data-form");
+            var SD = $(frmID).serialize();
+            var Target = $(this).attr("data-target");
+            if (IsAjax === "True") {
+                e.preventDefault();
+                $.get(SU, SD, function (rc) {
+                    $(Target).html(rc);
+                });
+            }
+        });
+        $("#PageIndex").change(function () {
+            $(".btnSearch").click();
+        });
+    });
+
+
+    function hideModal() {
+        $("#CategoryAddEditModal").modal("hide");
+    };
+    function BindGridKeywordOnDelete(categoryid,SU) {
+        var SU = '@Url.Action("GetKeywords","CategoryManagement")';
+        var id = categoryid;
+        var SD = "id=" + id;
+        var T = $(".KeywordGrid");
+        $.get(SU, SD, function (rc) {
+            $(T).html(rc);
+        });
+    };
+
+    $(document).on("submit", "#frmAddNew", function (e) {
+            e.preventDefault();
+            var SU = '@Url.Action("Add", "CategoryManagement")';
+            var SD = $("#frmAddNew").serialize();
+            $.post(SU, SD, function (operationResult) {
+
+                if (operationResult.succes) {
+                    SuccessMessage(operationResult.message);
+                    BindGrid();
+                    hideModal()
+                }
+                else {
+                    ErrorMessage(operationResult.message);
+                    hideModal()
+
+                }
+            });
+    });
+    $(document).on("submit", "#frmUpdate", function (e) {
+        e.preventDefault();
+        var SU = '@Url.Action("Update", "CategoryManagement")';
+        var frm = $("#frmUpdate");
+        var SD = $(frm).serialize();
+        $.post(SU, SD, function (operationResult) {
+
+            if (operationResult.succes) {
+                SuccessMessage(operationResult.message);
+                BindGrid();
+                hideModal()
+            }
+            else {
+                ErrorMessage(operationResult.message);
+                hideModal()
+
+            }
+        });
+
+
+        });
+        //common js
+    function BindGrid() {
+        $(".btnSearch").click();
+    };
+    $(document).on("click", ".btnEdit", function () {
+        myidkey = "";
+        var SU = $(this).attr("data-action");
+        var id = $(this).attr("data-id");
+        var T = $(this).attr("data-target");
+        var M = $(this).attr("data-target-Modal");
+        var SD = "id=" + id;
+        $.get(SU, SD, function (rc) {
+            $(T).html(rc);
+            $(M).modal("show");
+        });
+    });
+    $(document).on("click", "#btnAdd", function () {
+        myidkey = "";
+        var SU = $(this).attr("data-Action");
+        var SD = null;
+        var T = $(this).attr("data-target");
+        var M = $(this).attr("data-Modal");
+        $.get(SU, SD, function (rc) {
+            $(T).html(rc);
+            $(M).modal("show");
+        });
+    });
+    $(document).on("click", ".btnDelete", function () {
+        if (confirm("Are you sure you want to delete this record ?")) {
+            var SU = $(this).attr("data-action");
+            var id = $(this).attr("data-id");
+            var SD = "id=" + id;
+            $.post(SU, SD, function (operationResult) {
+                if (operationResult.succes) {
+                    SuccessMessage(operationResult.message);
+                    BindGrid();
+                }
+                else {
+                    ErrorMessage(operationResult.message);
+                }
+            });
+        }
+    });
+    $(document).on("click", "#btnCancel", function () {
+        hideModal();
+    });
+    $(document).on("click", ".btnCloseGrid", function () {
+        var showgrid = $(this).attr("data-show-target");
+        var hidegrid = $(this).attr("data-hide-target");
+        $(hidegrid).hide();
+        $(showgrid).show();
+
+    });
+    $(document).on("click", ".btnDeleteKeyword", function () {
+        if (confirm("Are you sure you want to delete this record ?")) {
+            var SU = $(this).attr("data-action");
+            var SUS = $(this).attr("data-action-serach");
+            var categoryid = $(this).attr("data-category-id");
+            var keywordid = $(this).attr("data-keyword-id");
+            var SD = "CategoryID=" + categoryid + "&KeywordID=" + keywordid;
+            $.post(SU, SD, function (operationResult) {
+                if (operationResult.succes) {
+                    SuccessMessage(operationResult.message);
+                    BindGridKeywordOnDelete(categoryid);
+                }
+                else {
+                    ErrorMessage(operationResult.message);
+                }
+            });
+        }
+    });
+    $(document).on("click", ".btnKeywords", function () {
+        var SU = $(this).attr("data-action");
+        var id = $(this).attr("data-id");
+        var SD = "id=" + id;
+        var T = $(this).attr("data-target");
+        var H = $(this).attr("data-hide-target");
+        $.get(SU, SD, function (rc) {
+            $(H).hide();
+            $(T).show();
+            $(T).html(rc);
+        })
+    });
+</script>
+<!--common-->
+<style>
+    .multiselectDrp-search {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 0;
+        align-content: flex-start;
+        justify-content: flex-start;
+        align-items: center;
+        height: fit-content;
+        width: fit-content;
+        border-radius: 16px;
+        border: 1px solid #ccc !important;
+        min-height: 35px;
+        /*        overflow: hidden;
+        max-height: 65px;
+        overflow-y: auto;*/
+    }
+
+        .multiselectDrp-search > .multiselectDrp-colected {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-content: flex-start;
+            justify-content: flex-start;
+            align-items: flex-start;
+        }
+
+            .multiselectDrp-search > .multiselectDrp-colected > .multiselectDrp-search-selected {
+                display: flex;
+                flex-direction: row;
+                flex-wrap: nowrap;
+                align-content: flex-start;
+                justify-content: flex-start;
+                align-items: center;
+                width: fit-content;
+                margin: 2px;
+                border: 1px solid steelblue !important;
+                border-radius: 16px;
+                padding: 0.08em 16px;
+                background-color: steelblue;
+                color: white;
+            }
+
+        .multiselectDrp-search > .multiselectDrp-search-text {
+            display: flex !important;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            align-content: flex-start;
+            justify-content: flex-start;
+            align-items: center;
+            width: 99px;
+            outline: 0;
+            margin: 5px !important;
+            border: 0;
+        }
+
+    .multiselectDrp-search-click {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        padding: 0;
+        align-content: flex-start;
+        justify-content: flex-start;
+        align-items: center;
+        height: fit-content;
+        width: 200px;
+    }
+
+    .multiselectDrp-search > .multiselectDrp-colected > .multiselectDrp-search-selected > a {
+        font-family: cursive;
+        margin-left: 10px;
+        line-height: 1;
+        text-decoration: none;
+        color: white;
+    }
+
+        .multiselectDrp-search > .multiselectDrp-colected > .multiselectDrp-search-selected > a:hover {
+            color: #ccc
+        }
+
+    .multiselectDrp-wrapper {
+        border: 1px solid #ccc !important;
+        border-top: none !important;
+        padding: 0.01em 16px;
+        height: fit-content;
+        width: 200px;
+        display: none;
+        padding: 0;
+        overflow: hidden;
+        border-radius: 16px;
+    }
+
+    .multiselectDrp-wrapper-toggle-show {
+        display: flex !important;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-content: flex-start;
+        justify-content: flex-start;
+        align-items: stretch;
+        overflow: hidden;
+        max-height: 94px;
+        overflow-y: auto;
+    }
+
+    .multiselectDrp-wrapper > .multiselectDrp-select {
+        border-top: 1px solid #ccc !important;
+        padding: 5px;
+        color: black;
+        text-decoration: none;
+    }
+
+        .multiselectDrp-wrapper > .multiselectDrp-select:hover {
+            background-color: #3c8dbc;
+        }
+
+    .multiselectDrp-select-toggle {
+        background-color: #ccc;
+    }
+
+    .multiselectDrp-wrapper > .multiselectDrp-select > span {
+        margin-left: 5px;
+    }
+</style>
+<script>
+    $(document).ready(function () {
+        $(".keyword-search").keyup(function () {
+            var SearchText = $(".keyword-search").val();
+            var sendingUrl = $(this).attr("data-action");
+            var SendingRoute = $(this).attr("data-sending");
+            var sendingData = SendingRoute + "=" + SearchText;
+            $.get(sendingUrl, sendingData, function (data) {
+                $(".keyword-Drp").html(data);
+                $(".keyword-Drp").addClass("multiselectDrp-wrapper-toggle-show");
+            });
+        });
+    });
+</script>
+<script>
+    $(document).on("click", ".keywordDrp-search", function () {
+        var T = $(this).attr("data-list");
+        $(".keywordDrp-search").toggleClass("multiselectDrp-search-click");
+        $(T).toggleClass("multiselectDrp-wrapper-toggle-show");
+    });
+    $(document).on("click", ".keyword-select", function () {
+        var T = $(this).attr("data-list");
+        var S = $(this).attr("data-search");
+        $(T).toggleClass("multiselectDrp-wrapper-toggle-show");
+        $(S).toggleClass("multiselectDrp-search-click");
+    });
+</script>
+<script>
+    var myidkey = "";
+    $(document).on("click", ".keyword-select", function () {
+        var T = $(this).attr("data-target");
+        var thisId = $(this).attr("data-id") + ",";
+        var thisValue = $(this).attr("data-value");
+        var idtest = myidkey;
+        if (!idtest.includes(thisId)) {
+            myidkey = myidkey + thisId;
+            buildSearchResultBasedOnDataForKeyword(thisValue, thisId);
+        } else {
+            myidkey = myidkey.replace(thisId, "");
+            var str = `[data-item-value="${thisValue}"]`;
+            RemoveBasedOnData(str);
+        }
+        console.log(myidkey);
+        $(T).val(myidkey);
+    });
+    $(document).on('click', '.keyword-selected', function () {
+        var thisid = $(this).attr("data-id");
+        var T = $(this).attr("data-target");
+        var thisvalue = $(this).attr("data-item-value");
+        myidkey = myidkey.replace(thisid, "");
+        $(T).val(myidkey);
+        $(this).closest('div').remove();
+    });
+    function buildSearchResultBasedOnDataForKeyword(value, id) {
+        let test = `<div href="#" class="multiselectDrp-search-selected"><a href="#" class="multiselectDrp-search-selected-remove keyword-selected" data-target="#KeywordID" data-id="${id}" data-item-value="${value}" >x</a><span>${value}</span></div>`;
+        console.log(test);
+        $(".keywordDrp-search >.multiselectDrp-colected").append(test);
+    }
+    function RemoveBasedOnData(str) {
+        $(str).closest('div').remove();
+    }
+</script>
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Index" asp-controller="CategoryManagement" method="get" id="frmSearchCategory">
+            @*<div asp-validation-summary="ModelOnly" class="text-danger"></div>*@
+            <div>
+                @{
+                    if (TempData["ErrorMessage"] != null)
+                    {
+                        <h3 style="color:red;">@TempData["ErrorMessage"]</h3>
+                    }
+                }
+            </div>
+            <div class="form-group">
+                <label asp-for="CategoryName" class="control-label"></label>
+                <input asp-for="CategoryName" class="form-control" />
+            </div>
+            <select type="button" asp-for="PageIndex">
+                @await Component.InvokeAsync("Pager", @TempData["PageCountCategory"])
+            </select>
+            <div class="form-group">
+                <input type="submit" value="Search" class="btn btn-primary btnSearch" data-IsAjax="True" data-Action="@Url.Action("Search","CategoryManagement")" data-form="#frmSearchCategory" data-target="#dvGrid" />
+                <span class="btn btn-success " id="btnAdd" data-Action="@Url.Action("Add","CategoryManagement")" data-target="#dvContent" data-Modal="#CategoryAddEditModal">Add</span>
+            </div>
+        </form>
+    </div>
+    <div class="col-md-8">
+        <div id="dvGrid" class="CategoryGrid">
+            @await Component.InvokeAsync("CategoryList", Model)
+        </div>
+        <div class="KeywordGrid">
+        </div>
+    </div>
+
+</div>
+
+<!-- Modal -->
+<div class="modal fade" id="CategoryAddEditModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title" id="myModalLabel">Author Add Edit</h4>
+            </div>
+            <div class="modal-body" id="dvContent">
+                ...
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

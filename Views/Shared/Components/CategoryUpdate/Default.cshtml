@@ -1,0 +1,76 @@
+﻿@model Article.Application.Model.Models.AddEditModels.Category.CategoryAddEditModel
+
+<script>
+    function buildUpdateSearchResultBasedOnDataForKeyword(value, id) {
+        let test = `<div href="#" class="multiselectDrp-search-selected"><a href="#" class="multiselectDrp-search-selected-remove keyword-selected" data-target="#KeywordID" data-id="${id}," data-item-value="${value}" >x</a><span>${value}</span></div>`;
+        console.log(test);
+        $(".keywordDrp-search >.multiselectDrp-colected").append(test);
+    }
+    function spliterKeyword(value, id) {
+        var splitvalue = `${value}`;
+        var splitid = `${id}`;
+        const myArrayvalue = splitvalue.split(",");
+        const myArrayid = splitid.split(",");
+        for (var i = 0; i < myArrayvalue.length; i++) {
+            var j = i;
+            if (myArrayvalue[i] !== "") {
+                buildUpdateSearchResultBasedOnDataForKeyword(myArrayvalue[i], myArrayid[j]);
+                myidkey = myidkey + myArrayid[j] + ",";
+            };
+        };
+    };
+    $(document).ready(function () {
+        $(".parentID select").val(@Model.ParentID);
+        spliterKeyword("@Model.KeywordName", "@Model.KeywordID");
+    });
+
+</script>
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="Update" asp-controller="CategoryManagement" method="post" id="frmUpdate">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="CategoryName" class="control-label"></label>
+                <input asp-for="CategoryName" class="form-control" />
+                <span asp-validation-for="CategoryName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Slug" class="control-label"></label>
+                <input asp-for="Slug" class="form-control" />
+                <span asp-validation-for="Slug" class="text-danger"></span>
+            </div>
+            <div class="form-group parentID">
+                <label asp-for="ParentID" class="control-label"></label>
+                @*<input asp-for="ParentID" class="form-control" />*@
+                <select class="form-control " id="FirstLayerCat" asp-for="ParentID">
+                    @await Component.InvokeAsync("CategoryRoot");
+                </select>
+                <span asp-validation-for="ParentID" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="KeywordID" class="control-label"></label>
+                <input asp-for="KeywordID" class="form-control" type="hidden" readonly/>
+                <div class="multiselectDrp-search keywordDrp-search" data-list=".keyword-Drp">
+                    <div class="multiselectDrp-colected">
+
+                    </div>
+
+                    <input class="multiselectDrp-search-text keyword-search" data-action="@Url.Action("DrpSearch","KeywordManagement")" data-sending="KeywordName" autocomplete="off" />
+                </div>
+                <div class="multiselectDrp-wrapper keyword-Drp">
+                    @await Component.InvokeAsync("KeywordDrp")
+                </div>
+                <span asp-validation-for="KeywordID" class="text-danger"></span>
+            </div>
+            <input asp-for="CategoryID" class="form-control" readonly type="hidden" />
+
+            <div class="form-group">
+                <input type="submit" class="btn btn-success" value="Save" id="btnEditChanges" data-action="@Url.Action("Update","CategoryManagement")" data-target-form="#frmUpdate" />
+                <span class="btn btn-warning" id="btnCancel">Cancel</span>
+            </div>
+        </form>
+    </div>
+</div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

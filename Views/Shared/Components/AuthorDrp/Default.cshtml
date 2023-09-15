@@ -1,0 +1,11 @@
+﻿@model IEnumerable<Article.DomainModel.Query.Author.DrpAuthorModel>
+
+@{
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+    <a href="#" class="multiselectDrp-select author-select" data-list=".author-Drp" data-search=".authorDrp-search" data-id="@item.AuthorID" data-value="@item.AuthorName" data-target="#AuthorID" data-slide-author="@item.AuthorName"><span>@item.AuthorName</span></a>
+
+}
+

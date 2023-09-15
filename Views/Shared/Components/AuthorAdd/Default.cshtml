@@ -1,0 +1,24 @@
+﻿@model Article.Application.Model.Models.AddEditModels.Author.AuthorAddEditModel
+<form asp-action="AddNew" asp-controller="AuthorManagement" method="post"  id="frmAddNew">
+    <table class="table tabel-bordered table-hover table-striped table-sm">
+        <tr>
+            <td><label asp-for="AuthorName" class="control-label"></label></td>
+            <td>
+                <input asp-for="AuthorName" class="form-control" />
+                <span asp-validation-for="AuthorName" class="text-danger"></span>
+            </td>
+        </tr>
+      
+        <tr>
+            <td colspan="2" class="text-center">
+                <img src="~/Content/Photos/loading2.gif" alt="preLoader" id="preLoaderSpinner" style="display:none" />
+                <input type="submit" class="btn btn-success" value="Add New" id="btnAddNew" data-action="@Url.Action("AddNew","AuthorManagement")" data-target-form="#frmAddNew" />
+                <span class="btn btn-warning" id="btnCancel">Cancel</span>
+            </td>
+        </tr>
+
+    </table>
+
+</form>
+
+

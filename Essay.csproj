@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Grpc.Core" Version="2.44.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="5.0.7">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Article.Application.Service\Article.Application.Service.csproj" />
+    <ProjectReference Include="..\Article.Bootstraper\Article.Bootstraper.csproj" />
+    <ProjectReference Include="..\Article.Persistence.EF\Article.Persistence.EF.csproj" />
+    <ProjectReference Include="..\Framework.File\Framework.File.csproj" />
+    <ProjectReference Include="..\Security.Application.Model\Security.Application.Model.csproj" />
+    <ProjectReference Include="..\Security.Application.Services\Security.Application.Services.csproj" />
+    <ProjectReference Include="..\Security.Bootstraper\Security.Bootstraper.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Models\Utilities\Author\" />
+    <Folder Include="wwwroot\AdminAssets\" />
+  </ItemGroup>
+
+</Project>

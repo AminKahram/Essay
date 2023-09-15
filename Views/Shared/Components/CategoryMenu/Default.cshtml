@@ -1,0 +1,97 @@
+﻿@model IEnumerable<Article.DomainModel.Query.Category.CategoryMenuItemModel>
+@*<script>
+    $(document).on("click", ".btnarts", function () {
+        var SU = $(this).attr("data-action");
+        var id = $(this).attr("data-id");
+        var SD = "id=" + id;
+        $.get(SU, SD, function () {
+
+        })
+    });
+</script>*@
+<style>
+    #mydropdown-menu {
+        left: -45px !important;
+        right: unset !important;
+    }
+</style>
+<nav class="main-menu">
+    <div class="container">
+        <ul class="list float-right">
+            @foreach (var Layer1 in Model)
+            {
+                <li class="list-item list-item-has-children mega-menu mega-menu-col-5">
+                    <a class="nav-link" href="#">@Layer1.CategoryName</a>
+                    <ul class="sub-menu nav">
+                        @foreach (var Layer2 in Layer1.Children)
+                        {
+                            <li class="list-item list-item-has-children">
+                                <i class="now-ui-icons arrows-1_minimal-left"></i>
+                                <a class="main-list-item nav-link btnarts" data-action="@Url.Action("ClientMenuSearch","Home")" data-id="@Layer2.CategoryID" href='@Url.Action("ClientMenuSearch","Home",new{ID = @Layer2.CategoryID })'><span>@Layer2.CategoryName</span></a>
+                                @*<ul class="sub-menu nav">
+                                <li class="list-item">
+                                    <a class="nav-link" href="#">کیف و کاور گوشی</a>
+                                </li>
+                            </ul>*@
+                            </li>
+                        }
+                    </ul>
+                </li>
+            }
+            <li class="list-item amazing-item">
+                <div class="user-login dropdown">
+                    <a href='#' class="btn btn-neutral dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink1">
+                        ورود
+                    </a>
+                    <ul class="dropdown-menu" id="mydropdown-menu" aria-labelledby="navbarDropdownMenuLink1" >
+                        <div class="dropdown-item">
+                            <a href='@Url.Action("Login","Account")' class="btn btn-info">ورود</a>
+                        </div>
+                        <!-- <div class="dropdown-item font-weight-bold">
+            <span>کاربر جدید هستید؟</span> <a class="register" href="#">ثبت‌نام</a>
+        </div>
+        <hr>
+        <div class="dropdown-item">
+            <a href="#" class="dropdown-item-link">
+                <i class="now-ui-icons users_single-02"></i>
+                پروفایل
+            </a>
+        </div>
+        <div class="dropdown-item">
+            <a href="#" class="dropdown-item-link">
+                <i class="now-ui-icons shopping_bag-16"></i>
+                پیگیری سفارش
+            </a>
+        </div>-->
+                    </ul>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+<!--<div class="user-login dropdown">
+    <a href='#' class="btn btn-neutral dropdown-toggle" data-toggle="dropdown" id="navbarDropdownMenuLink1">
+        ورود
+    </a>
+    <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink1">
+        <div class="dropdown-item">
+            <a href='Url.Action("Login","Account")' class="btn btn-info">ورود</a>
+        </div>-->
+        <!-- <div class="dropdown-item font-weight-bold">
+            <span>کاربر جدید هستید؟</span> <a class="register" href="#">ثبت‌نام</a>
+        </div>
+        <hr>
+        <div class="dropdown-item">
+            <a href="#" class="dropdown-item-link">
+                <i class="now-ui-icons users_single-02"></i>
+                پروفایل
+            </a>
+        </div>
+        <div class="dropdown-item">
+            <a href="#" class="dropdown-item-link">
+                <i class="now-ui-icons shopping_bag-16"></i>
+                پیگیری سفارش
+            </a>
+        </div>-->
+    <!--</ul>
+</div>-->
